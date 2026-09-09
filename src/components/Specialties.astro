@@ -120,24 +120,27 @@ const specialties = [
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {
                 specialties.map((spec) => (
-                    <div class="group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between transition-all duration-300">
+                    <div class="group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between transition-[transform,box-shadow] duration-200">
                         <div>
-                            <!-- Card Hero Image with Glass Badges -->
+                            <!-- Card Hero Image with Clean Specular Badges -->
                             <div class="relative h-48 w-full overflow-hidden bg-slate-100">
                                 <img 
                                     src={spec.image} 
                                     alt={spec.title} 
-                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-out"
                                     loading="lazy"
+                                    decoding="async"
+                                    width="600"
+                                    height="340"
                                 />
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
                                 
-                                <!-- Floating Pill on top left/right -->
+                                <!-- Specular Badge on top left/right (zero nested blur for maximum 60fps performance) -->
                                 <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                                    <span class="text-[11px] font-bold px-3 py-1 rounded-full glass-pill text-slate-900 bg-white/90 backdrop-blur-md shadow-xs">
+                                    <span class="text-[11px] font-bold px-3 py-1 rounded-full text-slate-900 bg-white/95 border border-white shadow-xs">
                                         {spec.badge}
                                     </span>
-                                    <div class="w-9 h-9 rounded-xl glass-pill bg-white/90 text-sky-700 flex items-center justify-center shadow-xs">
+                                    <div class="w-9 h-9 rounded-xl bg-white/95 border border-white text-sky-700 flex items-center justify-center shadow-xs">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
                                     </div>
                                 </div>
@@ -253,7 +256,7 @@ const specialties = [
                     class={`spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border ${
                         index === 0 
                             ? "bg-sky-600 text-white border-sky-600 shadow-xs" 
-                            : "bg-white/80 backdrop-blur-md text-slate-700 border-slate-200/80 hover:bg-sky-50"
+                            : "bg-white/90 text-slate-700 border-slate-200/80 hover:bg-sky-50"
                     }`}
                 >
                     {spec.badge}
@@ -281,15 +284,18 @@ const specialties = [
                                 alt={spec.title} 
                                 class="w-full h-full object-cover object-center"
                                 loading="lazy"
+                                decoding="async"
+                                width="500"
+                                height="280"
                             />
                             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent"></div>
                             
-                            <!-- Badges on Image -->
+                            <!-- Badges on Image (zero nested blur for maximum 60fps performance) -->
                             <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full glass-pill text-slate-900 bg-white/90 backdrop-blur-md shadow-xs">
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full text-slate-900 bg-white/95 border border-white shadow-xs">
                                     {spec.badge}
                                 </span>
-                                <div class="w-7 h-7 rounded-lg glass-pill bg-white/90 text-sky-700 flex items-center justify-center shadow-xs">
+                                <div class="w-7 h-7 rounded-lg bg-white/95 border border-white text-sky-700 flex items-center justify-center shadow-xs">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
                                 </div>
                             </div>
@@ -359,7 +365,7 @@ const specialties = [
     </div>
 </section>
 
-<!-- Lightweight Interactive Script for Mobile Carousel -->
+<!-- High-Performance Asynchronous IntersectionObserver Script -->
 <script>
     function initSpecialtiesCarousel() {
         const carousel = document.getElementById("specialties-carousel");
@@ -373,12 +379,10 @@ const specialties = [
         if (!carousel || cards.length === 0) return;
 
         function updateActiveSlide(index: number) {
-            // Update counter
             if (counter) {
                 counter.textContent = `Card ${index + 1} of ${cards.length}`;
             }
 
-            // Update dots
             dots.forEach((dot, idx) => {
                 if (idx === index) {
                     dot.classList.add("w-5", "bg-sky-600");
@@ -389,13 +393,12 @@ const specialties = [
                 }
             });
 
-            // Update category tab buttons
             tabBtns.forEach((btn, idx) => {
                 if (idx === index) {
                     btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-sky-600 text-white border-sky-600 shadow-xs";
                     btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
                 } else {
-                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-white/80 backdrop-blur-md text-slate-700 border-slate-200/80 hover:bg-sky-50";
+                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-white/90 text-slate-700 border-slate-200/80 hover:bg-sky-50";
                 }
             });
         }
@@ -407,7 +410,6 @@ const specialties = [
             }
         }
 
-        // Tab button clicks
         tabBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
                 const targetIdx = parseInt(btn.getAttribute("data-spec-target") || "0", 10);
@@ -415,7 +417,6 @@ const specialties = [
             });
         });
 
-        // Dot clicks
         dots.forEach((dot) => {
             dot.addEventListener("click", () => {
                 const dotIdx = parseInt(dot.getAttribute("data-dot-index") || "0", 10);
@@ -423,7 +424,6 @@ const specialties = [
             });
         });
 
-        // Prev / Next button clicks
         let currentIdx = 0;
         prevBtn?.addEventListener("click", () => {
             currentIdx = Math.max(0, currentIdx - 1);
@@ -435,24 +435,25 @@ const specialties = [
             scrollToSlide(currentIdx);
         });
 
-        // Scroll listener to update indicator
-        let scrollTimeout: ReturnType<typeof setTimeout>;
-        carousel.addEventListener("scroll", () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                const scrollLeft = carousel.scrollLeft;
-                const cardWidth = (cards[0] as HTMLElement).offsetWidth || 280;
-                const activeIndex = Math.min(
-                    cards.length - 1,
-                    Math.max(0, Math.round(scrollLeft / cardWidth))
-                );
-                currentIdx = activeIndex;
-                updateActiveSlide(activeIndex);
-            }, 50);
-        }, { passive: true });
+        // Zero-overhead native IntersectionObserver (runs off-main-thread)
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const idx = parseInt(entry.target.getAttribute("data-spec-card") || "0", 10);
+                            currentIdx = idx;
+                            updateActiveSlide(idx);
+                        }
+                    });
+                },
+                { root: carousel, threshold: 0.6 }
+            );
+
+            cards.forEach((card) => observer.observe(card));
+        }
     }
 
-    // Run on initial load and Astro page transitions
     initSpecialtiesCarousel();
     document.addEventListener("astro:page-load", initSpecialtiesCarousel);
 </script>
