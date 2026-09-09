@@ -1,0 +1,209 @@
+---
+// AboutDoctor.astro - Biography & Philosophy of Dr. Deepali Patil, MD
+const credentials = [
+    { label: "Medical Degree", val: "MBBS, MD (Internal Medicine)" },
+    { label: "Fellowship", val: "Fellow of American College of Physicians (FACP)" },
+    { label: "Experience", val: "18+ Years Clinical Practice" },
+    { label: "Specialty Focus", val: "Cardiometabolic & Preventive Medicine" },
+    { label: "Accreditation", val: "IMA & API Life Member" },
+    { label: "Publications", val: "40+ Clinical Papers in Peer Journals" },
+];
+
+const carePillars = [
+    {
+        title: "Unhurried Consultations",
+        desc: "Dedicated 30–45 minute sessions to listen closely to your complete medical history and symptoms.",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+    },
+    {
+        title: "Evidence-Based Precision",
+        desc: "Diagnoses driven by rigorous medical science, cutting-edge biomarkers, and clinical guidelines.",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />`,
+    },
+    {
+        title: "Comprehensive Care Roadmap",
+        desc: "Personalized integration of targeted pharmaceuticals, nutrition, sleep, and metabolic rehabilitation.",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />`,
+    },
+    {
+        title: "Continuity & Telehealth",
+        desc: "Direct access for routine question reviews, remote glucose monitoring, and digital follow-ups.",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />`,
+    },
+];
+---
+
+<!-- ================= DESKTOP ABOUT SECTION ================= -->
+<section id="about" class="hidden md:block w-full px-4 py-16 bg-gradient-to-b from-transparent via-sky-50/50 to-transparent">
+    <div class="mx-auto max-w-[1340px]">
+        <div class="grid grid-cols-12 gap-10 items-center">
+            
+            <!-- Left Column: Doctor Profile Card & Credentials -->
+            <div class="col-span-5">
+                <div class="relative rounded-3xl glass-panel-elevated elevation-6 p-7 overflow-hidden">
+                    <!-- Subtle badge overlay -->
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-teal-400 flex items-center justify-center text-white text-2xl font-black shadow-md shadow-sky-600/25">
+                            DP
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 leading-tight">Dr. Deepali Patil</h3>
+                            <p class="text-xs font-semibold text-sky-700 uppercase tracking-wider">MD, FACP • Senior Consultant</p>
+                            <div class="flex items-center gap-1 mt-1 text-[11px] text-emerald-600 font-medium">
+                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Verified Medical Specialist
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Credential Table -->
+                    <div class="space-y-3 pt-2">
+                        {
+                            credentials.map((cred) => (
+                                <div class="flex items-start justify-between py-2 border-b border-slate-100 last:border-b-0 text-xs">
+                                    <span class="font-semibold text-slate-500 w-36 flex-shrink-0">{cred.label}:</span>
+                                    <span class="font-bold text-slate-800 text-right">{cred.val}</span>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Philosophy Quote Box -->
+                    <div class="mt-6 p-4 rounded-2xl bg-sky-50/90 border border-sky-100/90 relative elevation-1">
+                        <svg class="w-6 h-6 text-sky-300 absolute top-3 left-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                        </svg>
+                        <p class="text-xs italic text-slate-700 pl-7 leading-relaxed font-medium">
+                            "The best interest of the patient is the only interest to be considered. Healthcare begins by listening patiently and discovering what lies behind the symptoms."
+                        </p>
+                        <p class="text-[11px] font-bold text-sky-800 text-right mt-2">— Dr. Deepali Patil, MD</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Biography & Care Pillars -->
+            <div class="col-span-7">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/80 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                    Meet Your Physician
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Dedicated to Clinical Excellence & Compassionate Healing
+                </h2>
+                <p class="mt-4 text-base text-slate-600 leading-relaxed">
+                    With over 18 years of clinical leadership across leading healthcare systems and outpatient specialty clinics, <strong>Dr. Deepali Patil</strong> combines profound clinical diagnostic acumen with genuine empathy for every patient.
+                </p>
+                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                    Trained in internal medicine with a dedicated focus on cardiometabolic disorders and preventative longevity, Dr. Patil adopts the renowned Mayo Clinic collaborative care philosophy: addressing the whole person rather than isolated ailments.
+                </p>
+
+                <!-- 4 Pillars Grid -->
+                <div class="mt-8 grid grid-cols-2 gap-4">
+                    {
+                        carePillars.map((pillar) => (
+                            <div class="p-4 rounded-2xl elevated-card">
+                                <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={pillar.icon} />
+                                </div>
+                                <h4 class="text-sm font-bold text-slate-900">{pillar.title}</h4>
+                                <p class="mt-1 text-xs text-slate-600 leading-relaxed">{pillar.desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div class="mt-8 flex items-center gap-4">
+                    <a
+                        href="#appointment"
+                        class="px-6 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm shadow-md shadow-sky-600/25 transition-all inline-flex items-center gap-2"
+                    >
+                        Schedule an Appointment with Dr. Patil
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ================= MOBILE ABOUT SECTION ================= -->
+<section class="block md:hidden px-3 py-10 bg-slate-100/50">
+    <div class="mb-5">
+        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+            About The Doctor
+        </div>
+        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Dr. Deepali Patil, <span class="text-sky-600">MD, FACP</span>
+        </h2>
+        <p class="mt-1 text-xs text-slate-600">
+            Senior Consultant Physician with 18+ years of clinical excellence in Internal Medicine & Cardiometabolic care.
+        </p>
+    </div>
+
+    <!-- Mobile Doctor Card -->
+    <div class="rounded-2xl glass-panel elevation-4 p-4 mb-4">
+        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <div class="w-11 h-11 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                DP
+            </div>
+            <div>
+                <h3 class="text-sm font-bold text-slate-900">Dr. Deepali Patil</h3>
+                <p class="text-[11px] font-medium text-sky-700">Internal Medicine Specialist</p>
+            </div>
+        </div>
+
+        <div class="mt-3 space-y-2 text-xs">
+            <div class="flex justify-between py-1 border-b border-slate-50">
+                <span class="text-slate-500">Qualifications:</span>
+                <span class="font-bold text-slate-800">MBBS, MD, FACP</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-50">
+                <span class="text-slate-500">Experience:</span>
+                <span class="font-bold text-slate-800">18+ Years</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-slate-50">
+                <span class="text-slate-500">Consultation:</span>
+                <span class="font-bold text-emerald-700">In-Clinic & Video</span>
+            </div>
+        </div>
+
+        <!-- Quote -->
+        <div class="mt-3 p-3 rounded-xl bg-sky-50/90 border border-sky-100 elevation-1">
+            <p class="text-[11px] italic text-slate-700 leading-snug">
+                "Healthcare starts with empathetic listening and understanding each patient's full life journey."
+            </p>
+            <p class="text-[10px] font-bold text-sky-800 text-right mt-1">— Dr. Deepali Patil</p>
+        </div>
+    </div>
+
+    <!-- Mobile Care Pillars (2x2) -->
+    <div class="grid grid-cols-2 gap-2">
+        {
+            carePillars.map((pillar) => (
+                <div class="p-3 rounded-xl glass-panel elevation-2">
+                    <div class="w-7 h-7 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center mb-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={pillar.icon} />
+                    </div>
+                    <h4 class="text-xs font-bold text-slate-900 leading-tight">{pillar.title}</h4>
+                    <p class="mt-1 text-[10px] text-slate-500 line-clamp-2">{pillar.desc}</p>
+                </div>
+            ))
+        }
+    </div>
+
+    <div class="mt-4">
+        <a
+            href="#appointment"
+            class="w-full py-2.5 rounded-xl bg-sky-600 text-white text-center font-bold text-xs shadow-md shadow-sky-600/20 block"
+        >
+            Book In-Clinic Consultation
+        </a>
+    </div>
+</section>
+

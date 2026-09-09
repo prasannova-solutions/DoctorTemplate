@@ -1,0 +1,228 @@
+---
+// Specialties.astro - Clinical Specialties & Medical Departments
+const specialties = [
+    {
+        id: "internal-medicine",
+        badge: "Core Specialty",
+        title: "Internal & Preventive Medicine",
+        subtitle: "Diagnostic Excellence & Longevity",
+        desc: "Comprehensive whole-person health evaluations, unexplained multi-symptom diagnoses, adult immunizations, and executive longevity assessments modeled after top clinical institutions.",
+        conditions: ["Executive Health", "Chronic Fatigue", "Multi-System Diagnostics", "Preventive Screenings"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`,
+        color: "sky",
+    },
+    {
+        id: "cardiovascular",
+        badge: "Cardiovascular Care",
+        title: "Cardiovascular & Metabolic Care",
+        subtitle: "Heart Health & Risk Mitigation",
+        desc: "Advanced screening and medical therapy for hypertension, dyslipidemia, coronary risk stratification, and preventive lifestyle modifications to protect heart and arterial vitality.",
+        conditions: ["Hypertension", "Cholesterol / Dyslipidemia", "ECG Review", "Vascular Protection"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />`,
+        color: "rose",
+    },
+    {
+        id: "endocrinology",
+        badge: "Metabolic Health",
+        title: "Diabetes & Endocrinology",
+        subtitle: "Glycemic Balance & Hormone Health",
+        desc: "Holistic care plans for Type 2 Diabetes, prediabetes reversal, continuous glucose monitoring (CGM) integration, and medical thyroid management (hypo/hyperthyroidism).",
+        conditions: ["Type 2 Diabetes", "Prediabetes Reversal", "Thyroid Disorders", "Metabolic Syndrome"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />`,
+        color: "amber",
+    },
+    {
+        id: "womens-health",
+        badge: "Women's Wellness",
+        title: "Women's Health & Preventive Oncology",
+        subtitle: "Comprehensive Care Across Lifespans",
+        desc: "Dedicated clinical consultations focused on hormonal transitions, perimenopause, bone mineral density assessment (osteopenia/osteoporosis), and cancer risk screenings.",
+        conditions: ["Hormone Balancing", "Bone Health & Osteoporosis", "Cancer Risk Profiling", "Preventive Wellness"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />`,
+        color: "purple",
+    },
+    {
+        id: "pulmonology",
+        badge: "Respiratory Health",
+        title: "Pulmonology & Respiratory Care",
+        subtitle: "Breath & Airway Management",
+        desc: "Thorough diagnostic and medical management for chronic cough, asthma, bronchitis, environmental allergies, and post-viral pulmonary recovery protocols.",
+        conditions: ["Bronchial Asthma", "Chronic Cough Workup", "Allergic Rhinitis", "Pulmonary Health"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />`,
+        color: "teal",
+    },
+    {
+        id: "diagnostics",
+        badge: "Clinical Diagnostics",
+        title: "Diagnostic Lab & Health Screenings",
+        subtitle: "Precise Biomarkers & Fast Results",
+        desc: "In-clinic blood diagnostics, comprehensive metabolic panels, organ function testing, and swift coordination with top medical imaging facilities.",
+        conditions: ["Lipid & HbA1c Panels", "Liver & Renal Panels", "Vitamin & Mineral Profiles", "Inflammatory Biomarkers"],
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />`,
+        color: "indigo",
+    },
+];
+---
+
+<!-- ================= DESKTOP SPECIALTIES SECTION ================= -->
+<section id="specialties" class="hidden md:block w-full px-4 py-16">
+    <div class="mx-auto max-w-[1340px]">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/80 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                    Clinical Departments & Expertise
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Specialized Medical Care,
+                    <br />
+                    <span class="text-sky-600">Tailored to Your Unique Health Profile</span>
+                </h2>
+                <p class="mt-4 text-slate-600 text-base leading-relaxed">
+                    Following the collaborative multidisciplinary philosophy inspired by institutions like Mayo Clinic, Dr. Deepali Patil provides thorough, evidence-based care across key medical disciplines.
+                </p>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a
+                    href="#appointment"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm shadow-md shadow-sky-600/25 transition-all"
+                >
+                    Schedule a Consultation
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- 3 Column Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+                specialties.map((spec) => (
+                    <div class="group relative rounded-3xl elevated-card p-7 flex flex-col justify-between">
+                        <div>
+                            <!-- Header & Icon -->
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white flex items-center justify-center transition-colors duration-300 shadow-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
+                                </div>
+                                <span class="text-xs font-bold px-3 py-1 rounded-full bg-slate-100 text-slate-700 group-hover:bg-sky-50 group-hover:text-sky-700 transition-colors">
+                                    {spec.badge}
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-sky-700 transition-colors">
+                                {spec.title}
+                            </h3>
+                            <p class="text-xs font-semibold text-sky-600/90 mt-1 uppercase tracking-wider">
+                                {spec.subtitle}
+                            </p>
+
+                            <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                {spec.desc}
+                            </p>
+
+                            <!-- Key Focus Chips -->
+                            <div class="mt-5 pt-4 border-t border-slate-100">
+                                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
+                                    Clinical Focus:
+                                </p>
+                                <div class="flex flex-wrap gap-1.5">
+                                    {
+                                        spec.conditions.map((cond) => (
+                                            <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-50 text-slate-700 font-medium border border-slate-100">
+                                                {cond}
+                                            </span>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Link -->
+                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <a
+                                href="#appointment"
+                                class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors group-hover:translate-x-1 duration-200"
+                            >
+                                Book Care for this Specialty
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                            <span class="text-slate-300 text-xs">• In-Clinic & Telehealth</span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ================= MOBILE SPECIALTIES SECTION ================= -->
+<section class="block md:hidden px-3 py-10">
+    <div class="mb-6">
+        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+            Medical Specialties
+        </div>
+        <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
+            Specialized Care by <br /><span class="text-sky-600">Dr. Deepali Patil</span>
+        </h2>
+        <p class="mt-2 text-xs text-slate-600 leading-relaxed">
+            Evidence-based diagnoses, preventative therapies, and ongoing medical management.
+        </p>
+    </div>
+
+    <!-- Mobile Stacked Card List -->
+    <div class="flex flex-col gap-3">
+        {
+            specialties.map((spec) => (
+                <div class="rounded-2xl glass-panel elevation-2 p-4">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="w-9 h-9 rounded-xl bg-sky-50 text-sky-600 flex-shrink-0 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700">
+                                    {spec.badge}
+                                </span>
+                            </div>
+                            <h3 class="text-sm font-bold text-slate-900 mt-1">
+                                {spec.title}
+                            </h3>
+                            <p class="text-[11px] text-slate-600 mt-1 leading-snug">
+                                {spec.desc}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Condition Tags for Mobile -->
+                    <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
+                        {
+                            spec.conditions.slice(0, 3).map((cond) => (
+                                <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                                    {cond}
+                                </span>
+                            ))
+                        }
+                    </div>
+
+                    <!-- Mobile CTA -->
+                    <div class="mt-3 flex items-center justify-between">
+                        <a
+                            href="#appointment"
+                            class="w-full py-1.5 rounded-lg bg-sky-50 text-sky-700 text-center font-bold text-xs hover:bg-sky-600 hover:text-white transition-colors"
+                        >
+                            Schedule for {spec.badge}
+                        </a>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+

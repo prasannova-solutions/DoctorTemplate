@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Dr. Deepali Patil, MD | Advanced Medical Care & Specialty Clinic",
+	description = "Comprehensive, patient-first medical care led by Dr. Deepali Patil, MD, FACP. Specialized in internal medicine, cardiovascular wellness, diabetes care, and preventive diagnostics."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-slate-50 text-slate-900 antialiased selection:bg-sky-500 selection:text-white relative overflow-x-hidden min-h-screen">
+		<!-- Atmospheric Ambient Lighting Orbs for Glassmorphism Refraction -->
+		<div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden" aria-hidden="true">
+			<div class="absolute -top-32 -left-32 w-[550px] h-[550px] rounded-full bg-sky-200/40 blur-[130px]"></div>
+			<div class="absolute top-[25%] -right-40 w-[600px] h-[600px] rounded-full bg-teal-100/45 blur-[140px]"></div>
+			<div class="absolute top-[55%] -left-32 w-[500px] h-[500px] rounded-full bg-cyan-100/40 blur-[130px]"></div>
+			<div class="absolute bottom-10 right-10 w-[550px] h-[550px] rounded-full bg-sky-100/50 blur-[140px]"></div>
+		</div>
+
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		min-height: 100%;
+	}
+</style>

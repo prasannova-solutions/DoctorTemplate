@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   GLASSMORPHISM & MUDBLAZOR-STYLE ELEVATION SYSTEM
+   ========================================================================== */
+
+/* MudBlazor Elevation Presets with Medical Tint Ambient Shadows */
+.elevation-1 {
+  box-shadow: 
+    0px 1px 3px 0px rgba(15, 23, 42, 0.06), 
+    0px 1px 2px 0px rgba(15, 23, 42, 0.04);
+}
+
+.elevation-2 {
+  box-shadow: 
+    0px 3px 6px -1px rgba(15, 23, 42, 0.07), 
+    0px 2px 4px -1px rgba(15, 23, 42, 0.05);
+}
+
+.elevation-4 {
+  box-shadow: 
+    0px 2px 4px -1px rgba(15, 23, 42, 0.08), 
+    0px 4px 8px 0px rgba(15, 23, 42, 0.06), 
+    0px 2px 14px 0px rgba(15, 23, 42, 0.05);
+}
+
+.elevation-6 {
+  box-shadow: 
+    0px 3px 5px -1px rgba(15, 23, 42, 0.08), 
+    0px 6px 10px 0px rgba(15, 23, 42, 0.07), 
+    0px 1px 18px 0px rgba(15, 23, 42, 0.06);
+}
+
+.elevation-8 {
+  box-shadow: 
+    0px 5px 6px -3px rgba(15, 23, 42, 0.09), 
+    0px 9px 12px 1px rgba(15, 23, 42, 0.08), 
+    0px 3px 20px 2px rgba(15, 23, 42, 0.06);
+}
+
+.elevation-12 {
+  box-shadow: 
+    0px 7px 8px -4px rgba(15, 23, 42, 0.1), 
+    0px 12px 17px 2px rgba(15, 23, 42, 0.08), 
+    0px 5px 24px 4px rgba(15, 23, 42, 0.07);
+}
+
+/* Frosted Blur Glass Panels with Specular Rim Lighting */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    0px 4px 8px -2px rgba(15, 23, 42, 0.07),
+    0px 8px 20px -4px rgba(15, 23, 42, 0.06),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.glass-panel-elevated {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0px 4px 10px -2px rgba(15, 23, 42, 0.08),
+    0px 10px 25px -4px rgba(15, 23, 42, 0.07),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.95);
+}
+
+/* Interactive Elevated Hover Lift (MudBlazor Card Elevation Feel) */
+.elevated-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px) saturate(170%);
+  -webkit-backdrop-filter: blur(12px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0px 2px 4px -1px rgba(15, 23, 42, 0.07), 
+    0px 4px 8px 0px rgba(15, 23, 42, 0.05), 
+    0px 1px 12px 0px rgba(15, 23, 42, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.elevated-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(186, 230, 253, 0.9);
+  box-shadow: 
+    0px 8px 14px -3px rgba(15, 23, 42, 0.09), 
+    0px 14px 28px -4px rgba(14, 165, 233, 0.14), 
+    0px 2px 18px 0px rgba(15, 23, 42, 0.05),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+}
+
+/* Floating Glass Pill */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0px 4px 12px -2px rgba(15, 23, 42, 0.07),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.85);
+}

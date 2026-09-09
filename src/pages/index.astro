@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import QuickCareBar from "../components/QuickCareBar.astro";
+import Specialties from "../components/Specialties.astro";
+import AboutDoctor from "../components/AboutDoctor.astro";
+import CareProcess from "../components/CareProcess.astro";
+import Testimonials from "../components/Testimonials.astro";
+import AppointmentSection from "../components/AppointmentSection.astro";
+import ClinicLocation from "../components/ClinicLocation.astro";
+import MedicalFaq from "../components/MedicalFaq.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+    <Navbar brandName="Dr. Deepali Patil" designation="MD, FACP" />
+    <main>
+        <Hero />
+        <QuickCareBar />
+        <Specialties />
+        <AboutDoctor />
+        <CareProcess />
+        <Testimonials />
+        <AppointmentSection />
+        <ClinicLocation />
+        <MedicalFaq />
+    </main>
+    <Footer />
+</Layout>
+

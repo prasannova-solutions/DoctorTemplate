@@ -1,0 +1,431 @@
+---
+// ClinicLocation.astro - Clinic Location, Transit, & Interactive Google Map
+const clinicDetails = {
+    name: "Patil Healthcare & Specialty Medical Center",
+    tagline: "Comprehensive Diagnostics & Internal Medicine Facility",
+    address: {
+        line1: "Suite 402, 4th Floor, Metro Health Tower",
+        line2: "North Main Road, Koregaon Park",
+        city: "Pune",
+        state: "Maharashtra",
+        postalCode: "411001",
+        country: "India",
+        landmark: "Opposite Jogger's Park, 200m from The Westin Pune",
+    },
+    googleMapsUrl: "https://maps.google.com/?q=Koregaon+Park,+Pune,+Maharashtra",
+    embedUrl: "https://maps.google.com/maps?q=Koregaon%20Park,%20Pune,%20Maharashtra&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    helpline: "(020) 2612-8800",
+    directMobile: "+91 98220 12345",
+    emergency: "+91 98220 99999",
+    hours: [
+        { days: "Monday – Friday", timing: "8:30 AM – 7:30 PM", status: "Regular OPD" },
+        { days: "Saturday", timing: "9:00 AM – 4:30 PM", status: "Specialist Clinics" },
+        { days: "Sunday", timing: "Emergency & On-Call Only", status: "Acute Triage" },
+    ],
+    transit: [
+        {
+            icon: "metro",
+            title: "Metro Transit",
+            desc: "5 mins from Kalyani Nagar Metro Station (Purple Line). Direct feeder autos available.",
+        },
+        {
+            icon: "parking",
+            title: "Valet & Parking",
+            desc: "Dedicated Level P1 patient parking with complimentary valet service for senior citizens.",
+        },
+        {
+            icon: "accessible",
+            title: "100% Accessible",
+            desc: "Zero-barrier wheelchair ramps, wide stretcher elevators, and accessible restrooms on Floor 4.",
+        },
+        {
+            icon: "lab",
+            title: "On-Site Diagnostics",
+            desc: "Fully integrated blood collection lab, resting ECG, and ultrasound on the same floor.",
+        },
+    ],
+};
+---
+
+<!-- Anchor target for both desktop and mobile navigation -->
+<div id="location" class="scroll-mt-20"></div>
+
+<!-- ================= DESKTOP CLINIC LOCATION & MAP SECTION ================= -->
+<section class="hidden md:block w-full px-4 py-16">
+    <div class="mx-auto max-w-[1340px]">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-100/90 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3.5 border border-sky-200/60 shadow-sm">
+                    <span class="w-2 h-2 rounded-full bg-sky-600 animate-ping"></span>
+                    <span>Visit Our Practice</span>
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
+                    Conveniently Located in <br class="hidden lg:block" />
+                    <span class="bg-gradient-to-r from-sky-600 to-teal-600 bg-clip-text text-transparent">
+                        Koregaon Park, Pune
+                    </span>
+                </h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">
+                    Centrally situated in Pune’s healthcare corridor with dedicated patient parking, seamless metro connectivity, and comprehensive on-site diagnostic infrastructure.
+                </p>
+            </div>
+
+            <!-- Quick Map Action Badge -->
+            <div class="flex items-center gap-3">
+                <a
+                    href={clinicDetails.googleMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs elevation-2 hover:elevation-4 border border-slate-200 transition-all group"
+                >
+                    <svg class="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <span>Open in Google Maps</span>
+                    <svg class="w-3.5 h-3.5 text-slate-400 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- 12-Column Grid: Location Details (5 cols) + Google Map Container (7 cols) -->
+        <div class="grid grid-cols-12 gap-8 items-stretch">
+            
+            <!-- Left Column: Clinic Address, Accessibility & Hours (5 cols) -->
+            <div class="col-span-5 flex flex-col justify-between gap-6">
+                
+                <!-- Main Address Card -->
+                <div class="glass-panel-elevated elevation-6 rounded-3xl p-7 relative overflow-hidden">
+                    <!-- Subtle background badge -->
+                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-sky-100/50 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+                        <div>
+                            <span class="text-[11px] font-bold text-sky-700 uppercase tracking-wider block mb-1">Main Clinical Facility</span>
+                            <h3 class="text-xl font-extrabold text-slate-900 leading-tight">
+                                {clinicDetails.name}
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-0.5">{clinicDetails.tagline}</p>
+                        </div>
+                        <div class="w-11 h-11 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center shrink-0 border border-sky-100 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Postal Address Box -->
+                    <div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 mb-5">
+                        <div class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-sky-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <div class="text-xs text-slate-700 leading-relaxed">
+                                <p class="font-bold text-slate-900">{clinicDetails.address.line1}</p>
+                                <p>{clinicDetails.address.line2}</p>
+                                <p class="font-medium text-slate-800">{clinicDetails.address.city}, {clinicDetails.address.state} — {clinicDetails.address.postalCode}, {clinicDetails.address.country}</p>
+                                <div class="mt-2 pt-2 border-t border-slate-200 flex items-center gap-1.5 text-[11px] text-amber-700 font-semibold">
+                                    <span>📍</span>
+                                    <span>Landmark: {clinicDetails.address.landmark}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons: Copy Address & Driving Directions -->
+                    <div class="grid grid-cols-2 gap-3 mb-5">
+                        <button
+                            id="desktop-copy-address-btn"
+                            class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200 elevation-1 hover:elevation-2 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                            data-address={`${clinicDetails.name}, ${clinicDetails.address.line1}, ${clinicDetails.address.line2}, ${clinicDetails.address.city}, ${clinicDetails.address.state} ${clinicDetails.address.postalCode}`}
+                        >
+                            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            <span id="desktop-copy-text">Copy Address</span>
+                        </button>
+
+                        <a
+                            href={clinicDetails.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="py-2.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs elevation-2 hover:elevation-4 transition-all flex items-center justify-center gap-1.5"
+                        >
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                            <span>Get Directions</span>
+                        </a>
+                    </div>
+
+                    <!-- Contact & Helpline Details -->
+                    <div class="pt-4 border-t border-slate-100 space-y-2 text-xs">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 font-medium">Clinic Reception Desk:</span>
+                            <a href={`tel:${clinicDetails.helpline.replace(/[^0-9]/g, '')}`} class="font-bold text-sky-700 hover:underline">
+                                {clinicDetails.helpline}
+                            </a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 font-medium">Appointments Desk (Mobile/WhatsApp):</span>
+                            <a href={`tel:${clinicDetails.directMobile.replace(/[^0-9]/g, '')}`} class="font-bold text-sky-700 hover:underline">
+                                {clinicDetails.directMobile}
+                            </a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-500 font-medium">Emergency Line (24/7 Triage):</span>
+                            <a href={`tel:${clinicDetails.emergency.replace(/[^0-9]/g, '')}`} class="font-bold text-rose-600 hover:underline">
+                                {clinicDetails.emergency}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transit & Patient Convenience 2x2 Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                    {
+                        clinicDetails.transit.map((item) => (
+                            <div class="elevated-card rounded-2xl p-3.5">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <span class="text-base">
+                                        {item.icon === "metro" ? "🚇" : item.icon === "parking" ? "🚗" : item.icon === "accessible" ? "♿" : "🔬"}
+                                    </span>
+                                    <h4 class="text-xs font-bold text-slate-800">{item.title}</h4>
+                                </div>
+                                <p class="text-[11px] text-slate-500 leading-snug">{item.desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+
+            </div>
+
+            <!-- Right Column: Interactive Google Maps Embed Container (7 cols) -->
+            <div class="col-span-7 flex flex-col">
+                <div class="glass-panel-elevated elevation-8 rounded-3xl p-3 h-full flex flex-col relative overflow-hidden group min-h-[540px]">
+                    
+                    <!-- Floating Top Info Overlay Pill -->
+                    <div class="absolute top-6 left-6 z-10 max-w-sm glass-panel elevation-6 rounded-2xl p-3.5 border border-white/90 backdrop-blur-md">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-teal-500 text-white flex items-center justify-center shrink-0 shadow-md">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-extrabold text-slate-900 leading-snug">Dr. Deepali Patil Clinic</h4>
+                                <div class="flex items-center gap-1.5 mt-0.5">
+                                    <div class="flex text-amber-400 text-xs">★★★★★</div>
+                                    <span class="text-[11px] font-bold text-slate-700">4.9</span>
+                                    <span class="text-[10px] text-slate-500">(420+ reviews)</span>
+                                </div>
+                                <div class="flex items-center gap-1.5 mt-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    <span class="text-[10px] font-semibold text-emerald-700">Open Today • 8:30 AM - 7:30 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Floating Bottom Right Map Controls Pill -->
+                    <div class="absolute bottom-6 right-6 z-10 flex items-center gap-2">
+                        <a
+                            href={clinicDetails.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-900 text-white font-bold text-xs elevation-4 backdrop-blur-md border border-white/20 transition-all flex items-center gap-2"
+                        >
+                            <svg class="w-4 h-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            <span>View Full Interactive Map</span>
+                        </a>
+                    </div>
+
+                    <!-- Actual Embedded Google Maps Iframe -->
+                    <div class="w-full h-full min-h-[500px] rounded-2xl overflow-hidden bg-slate-100 relative">
+                        <iframe
+                            title="Patil Healthcare Medical Center Google Map Location"
+                            src={clinicDetails.embedUrl}
+                            class="w-full h-full min-h-[500px] border-0"
+                            loading="lazy"
+                            allowfullscreen=""
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                    </div>
+
+                    <!-- Bottom strip info -->
+                    <div class="mt-3 px-3 py-2 flex items-center justify-between text-xs text-slate-500">
+                        <span class="flex items-center gap-1.5 text-[11px]">
+                            <span class="text-sky-600">✓</span> High-precision GPS coordinates verified for ambulance and medical transport.
+                        </span>
+                        <a
+                            href={clinicDetails.googleMapsUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-sky-600 hover:text-sky-700 font-bold text-[11px] underline"
+                        >
+                            Get Live Traffic & Route →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= MOBILE CLINIC LOCATION & MAP SECTION ================= -->
+<section id="mobile-location" class="block md:hidden px-3 py-10 scroll-mt-16">
+    <!-- Header -->
+    <div class="mb-5">
+        <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2 border border-sky-200/50">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+            Location & Directions
+        </div>
+        <h2 class="text-2xl font-black text-slate-900 tracking-tight leading-tight">
+            Find Our <span class="text-sky-600">Clinic</span>
+        </h2>
+        <p class="mt-1 text-xs text-slate-600">
+            Patil Healthcare & Specialty Medical Center, Koregaon Park, Pune.
+        </p>
+    </div>
+
+    <!-- Mobile Location Card -->
+    <div class="glass-panel-elevated elevation-4 rounded-2xl p-4 mb-4">
+        <div class="flex items-start gap-3 mb-3">
+            <div class="w-9 h-9 rounded-xl bg-sky-600 text-white flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+            </div>
+            <div>
+                <h3 class="text-sm font-bold text-slate-900">{clinicDetails.name}</h3>
+                <p class="text-[11px] text-slate-500">Suite 402, 4th Flr, Metro Health Tower, Koregaon Park, Pune 411001</p>
+            </div>
+        </div>
+
+        <div class="p-2.5 rounded-xl bg-amber-50/80 border border-amber-200/60 mb-3 text-[11px] text-amber-800 flex items-center gap-1.5 font-medium">
+            <span>📍</span>
+            <span>Opposite Jogger's Park, Near The Westin Pune</span>
+        </div>
+
+        <!-- 2 Action Buttons: Direct Call & Navigate -->
+        <div class="grid grid-cols-2 gap-2 mb-3">
+            <a
+                href={`tel:${clinicDetails.helpline.replace(/[^0-9]/g, '')}`}
+                class="py-2.5 px-2 rounded-xl bg-white border border-slate-200 text-slate-800 font-bold text-xs flex items-center justify-center gap-1.5 elevation-1 active:scale-95 transition-transform"
+            >
+                <svg class="w-3.5 h-3.5 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>Call Clinic</span>
+            </a>
+
+            <a
+                href={clinicDetails.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="py-2.5 px-2 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 elevation-2 active:scale-95 transition-transform"
+            >
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+                <span>Navigate</span>
+            </a>
+        </div>
+
+        <!-- Working Hours Bar -->
+        <div class="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500">Mon–Sat: 8:30am – 7:30pm</span>
+            <span class="text-emerald-700 font-bold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Open Today
+            </span>
+        </div>
+    </div>
+
+    <!-- Mobile Google Map Embed Frame -->
+    <div class="glass-panel-elevated elevation-4 rounded-2xl p-1.5 mb-4 overflow-hidden">
+        <div class="w-full h-64 rounded-xl overflow-hidden relative bg-slate-100">
+            <iframe
+                title="Patil Healthcare Google Map Location Mobile"
+                src={clinicDetails.embedUrl}
+                class="w-full h-full border-0"
+                loading="lazy"
+                allowfullscreen=""
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+        <div class="p-2 flex items-center justify-between text-[11px] text-slate-500">
+            <span>Tap map to explore area</span>
+            <a
+                href={clinicDetails.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sky-600 font-bold underline"
+            >
+                Open in App →
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Transit Badges -->
+    <div class="grid grid-cols-2 gap-2 text-xs">
+        <div class="p-2.5 rounded-xl bg-white/80 border border-slate-200/80 elevation-1">
+            <div class="font-bold text-slate-800 text-[11px] flex items-center gap-1">
+                <span>🚇</span> Metro: 5 Mins
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5">Kalyani Nagar Metro Station</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white/80 border border-slate-200/80 elevation-1">
+            <div class="font-bold text-slate-800 text-[11px] flex items-center gap-1">
+                <span>🚗</span> Free Valet
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5">Level P1 Basement Parking</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white/80 border border-slate-200/80 elevation-1">
+            <div class="font-bold text-slate-800 text-[11px] flex items-center gap-1">
+                <span>♿</span> 100% Barrier-Free
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5">Wheelchair & Stretcher Lift</p>
+        </div>
+        <div class="p-2.5 rounded-xl bg-white/80 border border-slate-200/80 elevation-1">
+            <div class="font-bold text-slate-800 text-[11px] flex items-center gap-1">
+                <span>🔬</span> On-Site Labs
+            </div>
+            <p class="text-[10px] text-slate-500 mt-0.5">Same-day blood & ECG results</p>
+        </div>
+    </div>
+</section>
+
+<!-- Script for Copying Address with Visual Feedback -->
+<script>
+    const copyBtn = document.getElementById("desktop-copy-address-btn");
+    const copyText = document.getElementById("desktop-copy-text");
+
+    if (copyBtn && copyText) {
+        copyBtn.addEventListener("click", async () => {
+            const address = copyBtn.getAttribute("data-address");
+            if (address) {
+                try {
+                    await navigator.clipboard.writeText(address);
+                    copyText.textContent = "Address Copied! ✓";
+                    copyBtn.classList.add("bg-emerald-50", "text-emerald-700", "border-emerald-300");
+                    setTimeout(() => {
+                        copyText.textContent = "Copy Address";
+                        copyBtn.classList.remove("bg-emerald-50", "text-emerald-700", "border-emerald-300");
+                    }, 2500);
+                } catch (err) {
+                    console.error("Could not copy text: ", err);
+                }
+            }
+        });
+    }
+</script>
