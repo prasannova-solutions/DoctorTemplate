@@ -198,92 +198,262 @@ const specialties = [
 </section>
 
 <!-- ================= MOBILE SPECIALTIES SECTION ================= -->
-<section class="block md:hidden px-3 py-10">
-    <div class="mb-6">
-        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
-            Medical Specialties
+<section class="block md:hidden px-3 py-8 overflow-hidden">
+    <!-- Header with Doctor Branding -->
+    <div class="mb-4">
+        <div class="flex items-center justify-between mb-2">
+            <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
+                Clinical Specialties
+            </div>
+            <!-- Swipe / Nav Hint with Arrow Buttons -->
+            <div class="flex items-center gap-1.5">
+                <button 
+                    id="spec-prev-btn" 
+                    aria-label="Previous specialty"
+                    class="w-7 h-7 rounded-full glass-pill flex items-center justify-center text-slate-700 active:scale-95 transition-all shadow-xs"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button 
+                    id="spec-next-btn" 
+                    aria-label="Next specialty"
+                    class="w-7 h-7 rounded-full glass-pill flex items-center justify-center text-slate-700 active:scale-95 transition-all shadow-xs"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
         </div>
         
-        <div class="flex items-center gap-3 mt-1 mb-2">
+        <div class="flex items-center gap-3">
             <img 
                 src="/Hero/MobileHeroCutout.png" 
                 alt="Dr. Deepali Patil" 
-                class="w-12 h-12 rounded-full object-cover object-top border-2 border-sky-200 shadow-xs bg-sky-50 flex-shrink-0"
+                class="w-11 h-11 rounded-full object-cover object-top border-2 border-sky-300 shadow-xs bg-sky-50 flex-shrink-0"
             />
             <div>
-                <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                    Specialized Care by <br /><span class="text-sky-600">Dr. Deepali Patil</span>
+                <h2 class="text-xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Specialized Care by <span class="text-sky-600">Dr. Patil</span>
                 </h2>
-                <p class="text-[11px] font-semibold text-slate-500">MD, FACP • Senior Consultant</p>
+                <p class="text-[11px] font-medium text-slate-500">MD, FACP • 6 Departments • Swipe to explore</p>
             </div>
         </div>
-
-        <p class="mt-2 text-xs text-slate-600 leading-relaxed">
-            Evidence-based diagnoses, preventative therapies, and ongoing medical management.
-        </p>
     </div>
 
-    <!-- Mobile Stacked Card List with Images -->
-    <div class="flex flex-col gap-4">
+    <!-- Quick Jump Category Tabs -->
+    <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-3 pt-1 -mx-3 px-3">
         {
-            specialties.map((spec) => (
-                <div class="rounded-2xl elevated-card overflow-hidden">
-                    <div class="relative h-36 w-full overflow-hidden bg-slate-100">
-                        <img 
-                            src={spec.image} 
-                            alt={spec.title} 
-                            class="w-full h-full object-cover object-center"
-                            loading="lazy"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
-                        <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
-                            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-slate-800">
-                                {spec.badge}
-                            </span>
-                            <div class="w-7 h-7 rounded-lg bg-white/90 backdrop-blur-md text-sky-700 flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
+            specialties.map((spec, index) => (
+                <button
+                    data-spec-target={index}
+                    class={`spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border ${
+                        index === 0 
+                            ? "bg-sky-600 text-white border-sky-600 shadow-xs" 
+                            : "bg-white/80 backdrop-blur-md text-slate-700 border-slate-200/80 hover:bg-sky-50"
+                    }`}
+                >
+                    {spec.badge}
+                </button>
+            ))
+        }
+    </div>
+
+    <!-- Swipeable Horizontal Snap Carousel -->
+    <div 
+        id="specialties-carousel"
+        class="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-3 pt-1 -mx-3 px-3 no-scrollbar scroll-smooth"
+    >
+        {
+            specialties.map((spec, idx) => (
+                <div 
+                    data-spec-card={idx}
+                    class="w-[82vw] max-w-[310px] flex-shrink-0 snap-center rounded-2xl elevated-card overflow-hidden flex flex-col justify-between"
+                >
+                    <div>
+                        <!-- Card Hero Image -->
+                        <div class="relative h-40 w-full overflow-hidden bg-slate-100">
+                            <img 
+                                src={spec.image} 
+                                alt={spec.title} 
+                                class="w-full h-full object-cover object-center"
+                                loading="lazy"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent"></div>
+                            
+                            <!-- Badges on Image -->
+                            <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+                                <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full glass-pill text-slate-900 bg-white/90 backdrop-blur-md shadow-xs">
+                                    {spec.badge}
+                                </span>
+                                <div class="w-7 h-7 rounded-lg glass-pill bg-white/90 text-sky-700 flex items-center justify-center shadow-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
+                                </div>
+                            </div>
+                            
+                            <!-- Subtitle Overlay -->
+                            <div class="absolute bottom-2.5 left-3 right-3">
+                                <span class="text-[11px] font-semibold text-sky-200 drop-shadow-sm">
+                                    {spec.subtitle}
+                                </span>
                             </div>
                         </div>
-                        <div class="absolute bottom-2 left-3 right-3">
-                            <span class="text-[11px] font-semibold text-sky-200 drop-shadow-sm">
-                                {spec.subtitle}
-                            </span>
+
+                        <!-- Card Body -->
+                        <div class="p-4">
+                            <h3 class="text-base font-bold text-slate-900 leading-snug">
+                                {spec.title}
+                            </h3>
+                            <p class="text-xs text-slate-600 mt-1.5 leading-relaxed line-clamp-2">
+                                {spec.desc}
+                            </p>
+
+                            <!-- Clinical Focus Tags -->
+                            <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
+                                {
+                                    spec.conditions.slice(0, 3).map((cond) => (
+                                        <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100/90 text-slate-700">
+                                            {cond}
+                                        </span>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
 
-                    <div class="p-4">
-                        <h3 class="text-base font-bold text-slate-900">
-                            {spec.title}
-                        </h3>
-                        <p class="text-xs text-slate-600 mt-1 leading-relaxed">
-                            {spec.desc}
-                        </p>
-
-                        <!-- Condition Tags for Mobile -->
-                        <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
-                            {
-                                spec.conditions.slice(0, 3).map((cond) => (
-                                    <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
-                                        {cond}
-                                    </span>
-                                ))
-                            }
-                        </div>
-
-                        <!-- Mobile CTA -->
-                        <div class="mt-3.5">
-                            <a
-                                href="#appointment"
-                                class="block w-full py-2 rounded-xl bg-sky-50 text-sky-700 text-center font-bold text-xs hover:bg-sky-600 hover:text-white transition-colors"
-                            >
-                                Schedule Consultation →
-                            </a>
-                        </div>
+                    <!-- Bottom Action Link -->
+                    <div class="p-4 pt-0">
+                        <a
+                            href="#appointment"
+                            class="block w-full py-2.5 rounded-xl bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white text-center font-bold text-xs shadow-sm shadow-sky-600/20 active:scale-[0.99] transition-all"
+                        >
+                            Schedule for {spec.badge} →
+                        </a>
                     </div>
                 </div>
             ))
         }
     </div>
+
+    <!-- Carousel Indicator Dots & Counter -->
+    <div class="flex items-center justify-between px-1 mt-2">
+        <span id="spec-counter" class="text-[11px] font-semibold text-slate-400">
+            Card 1 of {specialties.length}
+        </span>
+        <div class="flex items-center gap-1.5" id="spec-dots">
+            {
+                specialties.map((_, i) => (
+                    <button 
+                        data-dot-index={i}
+                        aria-label={`Go to slide ${i + 1}`}
+                        class={`spec-dot h-1.5 rounded-full transition-all duration-300 ${
+                            i === 0 ? "w-5 bg-sky-600" : "w-1.5 bg-slate-300"
+                        }`}
+                    />
+                ))
+            }
+        </div>
+    </div>
 </section>
+
+<!-- Lightweight Interactive Script for Mobile Carousel -->
+<script>
+    function initSpecialtiesCarousel() {
+        const carousel = document.getElementById("specialties-carousel");
+        const prevBtn = document.getElementById("spec-prev-btn");
+        const nextBtn = document.getElementById("spec-next-btn");
+        const counter = document.getElementById("spec-counter");
+        const dots = document.querySelectorAll(".spec-dot");
+        const tabBtns = document.querySelectorAll(".spec-tab-btn");
+        const cards = document.querySelectorAll("[data-spec-card]");
+
+        if (!carousel || cards.length === 0) return;
+
+        function updateActiveSlide(index: number) {
+            // Update counter
+            if (counter) {
+                counter.textContent = `Card ${index + 1} of ${cards.length}`;
+            }
+
+            // Update dots
+            dots.forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add("w-5", "bg-sky-600");
+                    dot.classList.remove("w-1.5", "bg-slate-300");
+                } else {
+                    dot.classList.remove("w-5", "bg-sky-600");
+                    dot.classList.add("w-1.5", "bg-slate-300");
+                }
+            });
+
+            // Update category tab buttons
+            tabBtns.forEach((btn, idx) => {
+                if (idx === index) {
+                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-sky-600 text-white border-sky-600 shadow-xs";
+                    btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                } else {
+                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-white/80 backdrop-blur-md text-slate-700 border-slate-200/80 hover:bg-sky-50";
+                }
+            });
+        }
+
+        function scrollToSlide(index: number) {
+            if (cards[index]) {
+                cards[index].scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                updateActiveSlide(index);
+            }
+        }
+
+        // Tab button clicks
+        tabBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetIdx = parseInt(btn.getAttribute("data-spec-target") || "0", 10);
+                scrollToSlide(targetIdx);
+            });
+        });
+
+        // Dot clicks
+        dots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+                const dotIdx = parseInt(dot.getAttribute("data-dot-index") || "0", 10);
+                scrollToSlide(dotIdx);
+            });
+        });
+
+        // Prev / Next button clicks
+        let currentIdx = 0;
+        prevBtn?.addEventListener("click", () => {
+            currentIdx = Math.max(0, currentIdx - 1);
+            scrollToSlide(currentIdx);
+        });
+
+        nextBtn?.addEventListener("click", () => {
+            currentIdx = Math.min(cards.length - 1, currentIdx + 1);
+            scrollToSlide(currentIdx);
+        });
+
+        // Scroll listener to update indicator
+        let scrollTimeout: ReturnType<typeof setTimeout>;
+        carousel.addEventListener("scroll", () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollLeft = carousel.scrollLeft;
+                const cardWidth = (cards[0] as HTMLElement).offsetWidth || 280;
+                const activeIndex = Math.min(
+                    cards.length - 1,
+                    Math.max(0, Math.round(scrollLeft / cardWidth))
+                );
+                currentIdx = activeIndex;
+                updateActiveSlide(activeIndex);
+            }, 50);
+        }, { passive: true });
+    }
+
+    // Run on initial load and Astro page transitions
+    initSpecialtiesCarousel();
+    document.addEventListener("astro:page-load", initSpecialtiesCarousel);
+</script>
 
