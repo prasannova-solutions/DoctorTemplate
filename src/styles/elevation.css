@@ -128,7 +128,7 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--glass-rim-top);
   box-shadow: 
-    0 22px 48px -8px var(--shadow-umbra),
+    0 22px 20px -8px var(--shadow-umbra),
     0 10px 22px -4px var(--shadow-penumbra),
     0 4px 16px 0 var(--shadow-glow),
     inset 0 2px 2px 0 #ffffff;
@@ -143,9 +143,9 @@
   -webkit-backdrop-filter: blur(12px) saturate(170%);
   border: 1px solid var(--glass-border-color);
   box-shadow: 
-    0 12px 28px -4px var(--shadow-penumbra),
-    0 4px 12px -2px var(--shadow-ambient),
-    0 2px 8px 0 var(--shadow-glow),
+    0 8px 20px -4px var(--shadow-penumbra),
+    0 3px 8px -2px var(--shadow-ambient),
+    0 1px 6px 0 var(--shadow-glow),
     inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -156,13 +156,13 @@
 }
 
 .elevated-card:hover {
-  transform: translate3d(0, -6px, 0);
+  transform: translate3d(0, -5px, 0);
   background: var(--glass-bg-hover);
   border-color: rgba(186, 230, 253, 1);
   box-shadow: 
-    0 28px 56px -8px var(--shadow-umbra),
-    0 14px 28px -4px var(--shadow-glow-hover),
-    0 4px 14px 0 var(--shadow-contact),
+    0 20px 40px -6px var(--shadow-umbra),
+    0 10px 20px -3px var(--shadow-glow-hover),
+    0 3px 10px 0 var(--shadow-contact),
     inset 0 2px 2px 0 #ffffff;
 }
 
