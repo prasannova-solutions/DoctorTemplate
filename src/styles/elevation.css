@@ -53,41 +53,18 @@
 
 
   /* ========================================================================
-     ELEVATION SCALE
+     ELEVATION SCALE (4-SIDED BALANCED SHADOWS)
+     Uniform shadow radiating evenly on all 4 sides (top, bottom, left, right)
+     Single-pass GPU rendering for maximum performance and silky-smooth scrolling
      ======================================================================== */
 
-  --shadow-elevation-1:
-    0 2px 5px rgba(15, 23, 42, 0.10),
-    0 1px 2px rgba(15, 23, 42, 0.08);
-
-  --shadow-elevation-2:
-    0 4px 8px rgba(15, 23, 42, 0.12),
-    0 2px 4px rgba(15, 23, 42, 0.08);
-
-  --shadow-elevation-4:
-    0 7px 14px rgba(15, 23, 42, 0.15),
-    0 3px 6px rgba(15, 23, 42, 0.10),
-    0 0 10px var(--shadow-glow);
-
-  --shadow-elevation-6:
-    0 10px 20px rgba(15, 23, 42, 0.18),
-    0 4px 8px rgba(15, 23, 42, 0.12),
-    0 0 12px var(--shadow-glow);
-
-  --shadow-elevation-8:
-    0 14px 28px rgba(15, 23, 42, 0.20),
-    0 6px 12px rgba(15, 23, 42, 0.14),
-    0 0 14px var(--shadow-glow);
-
-  --shadow-elevation-12:
-    0 20px 40px rgba(15, 23, 42, 0.23),
-    0 8px 16px rgba(15, 23, 42, 0.16),
-    0 0 18px var(--shadow-glow);
-
-  --shadow-elevation-16:
-    0 28px 55px rgba(15, 23, 42, 0.26),
-    0 12px 24px rgba(15, 23, 42, 0.18),
-    0 0 22px var(--shadow-glow-hover);
+  --shadow-elevation-1: 0 0 6px rgba(15, 23, 42, 0.06);
+  --shadow-elevation-2: 0 0 10px rgba(15, 23, 42, 0.08);
+  --shadow-elevation-4: 0 0 15px rgba(15, 23, 42, 0.09);
+  --shadow-elevation-6: 0 0 20px rgba(15, 23, 42, 0.10);
+  --shadow-elevation-8: 0 0 26px rgba(15, 23, 42, 0.11);
+  --shadow-elevation-12: 0 0 34px rgba(15, 23, 42, 0.13);
+  --shadow-elevation-16: 0 0 44px rgba(15, 23, 42, 0.15);
 }
 
 
@@ -135,7 +112,7 @@
 
 
 /* ==========================================================================
-   FROSTED GLASS PANEL
+   FROSTED GLASS PANEL (4-Sided Uniform Shadow)
    ========================================================================== */
 
 .glass-panel {
@@ -143,31 +120,23 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border-color);
-  box-shadow:
-    0 6px 18px -4px rgba(15, 23, 42, 0.09),
-    0 2px 6px -1px rgba(15, 23, 42, 0.04),
-    0 0 10px 0 var(--shadow-glow),
-    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  box-shadow: 0 0 16px rgba(15, 23, 42, 0.07);
 }
 
 /* ==========================================================================
-   ELEVATED GLASS PANEL
+   ELEVATED GLASS PANEL (4-Sided Uniform Shadow)
    ========================================================================== */
 
 .glass-panel-elevated {
   background: var(--glass-bg-elevated);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-rim-top);
-  box-shadow:
-    0 10px 24px -6px rgba(15, 23, 42, 0.10),
-    0 4px 10px -2px rgba(15, 23, 42, 0.05),
-    0 0 12px 0 var(--shadow-glow),
-    inset 0 2px 2px 0 #ffffff;
+  box-shadow: 0 0 24px rgba(15, 23, 42, 0.09);
 }
 
 /* ==========================================================================
-   3D FLOATING CARD
+   3D FLOATING CARD (4-Sided Uniform Shadow)
    ========================================================================== */
 
 .elevated-card {
@@ -175,11 +144,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border-color);
-  box-shadow:
-    0 4px 12px -2px rgba(15, 23, 42, 0.08),
-    0 1px 3px 0 rgba(15, 23, 42, 0.04),
-    0 0 8px 0 var(--shadow-glow),
-    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  box-shadow: 0 0 16px rgba(15, 23, 42, 0.08);
   transition:
     transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
@@ -191,18 +156,14 @@
    ========================================================================== */
 
 .elevated-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   background: var(--glass-bg-hover);
-  border-color: rgba(186, 230, 253, 1);
-  box-shadow:
-    0 12px 24px -4px rgba(15, 23, 42, 0.14),
-    0 4px 8px -2px rgba(15, 23, 42, 0.06),
-    0 0 14px 0 var(--shadow-glow-hover),
-    inset 0 2px 2px 0 #ffffff;
+  border-color: rgba(186, 230, 253, 0.95);
+  box-shadow: 0 0 24px rgba(15, 23, 42, 0.13);
 }
 
 /* ==========================================================================
-   GLASS PILL / NAVBAR
+   GLASS PILL / NAVBAR (4-Sided Uniform Shadow)
    ========================================================================== */
 
 .glass-pill {
@@ -210,11 +171,7 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border-color);
-  box-shadow:
-    0 4px 12px -2px rgba(15, 23, 42, 0.08),
-    0 1px 4px -1px rgba(15, 23, 42, 0.04),
-    0 0 6px 0 var(--shadow-glow),
-    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  box-shadow: 0 0 12px rgba(15, 23, 42, 0.07);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -222,11 +179,7 @@
 
 .glass-pill:hover {
   transform: translateY(-2px);
-  box-shadow:
-    0 8px 18px -3px rgba(15, 23, 42, 0.12),
-    0 2px 6px -1px rgba(15, 23, 42, 0.05),
-    0 0 10px 0 var(--shadow-glow-hover),
-    inset 0 2px 2px #ffffff;
+  box-shadow: 0 0 18px rgba(15, 23, 42, 0.11);
 }
 
 
@@ -251,20 +204,17 @@
   /* Physical button depth */
   box-shadow:
 
-    /* Main shadow */
-    0 9px 0 rgba(15, 23, 42, 0.14),
+    /* Main physical edge */
+    0 8px 0 rgba(15, 23, 42, 0.12),
 
-    /* Floating shadow */
-    0 14px 24px rgba(15, 23, 42, 0.16),
-
-    /* Small ambient glow */
-    0 0 10px rgba(14, 165, 233, 0.10),
+    /* 4-sided floating shadow */
+    0 0 16px rgba(15, 23, 42, 0.10),
 
     /* Top highlight */
     inset 0 2px 2px rgba(255, 255, 255, 1),
 
     /* Bottom inner shadow */
-    inset 0 -2px 3px rgba(15, 23, 42, 0.06);
+    inset 0 -2px 3px rgba(15, 23, 42, 0.05);
 
   transform: translateY(0);
 
@@ -282,11 +232,9 @@
 
   box-shadow:
 
-    0 11px 0 rgba(15, 23, 42, 0.14),
+    0 10px 0 rgba(15, 23, 42, 0.12),
 
-    0 18px 30px rgba(15, 23, 42, 0.20),
-
-    0 0 15px rgba(14, 165, 233, 0.16),
+    0 0 22px rgba(15, 23, 42, 0.14),
 
     inset 0 2px 2px #ffffff,
 
@@ -298,13 +246,13 @@
 
 .btn-3d:active {
 
-  transform: translateY(6px);
+  transform: translateY(5px);
 
   box-shadow:
 
-    0 3px 0 rgba(15, 23, 42, 0.16),
+    0 3px 0 rgba(15, 23, 42, 0.14),
 
-    0 5px 10px rgba(15, 23, 42, 0.12),
+    0 0 8px rgba(15, 23, 42, 0.10),
 
     inset 0 2px 4px rgba(15, 23, 42, 0.08);
 }
@@ -312,7 +260,7 @@
 
 /* ==========================================================================
    BLUE 3D BUTTON
-   ========================================================================== */
+   ========================================================================= */
 
 .btn-3d-blue {
 
@@ -333,19 +281,16 @@
   box-shadow:
 
     /* Physical bottom edge */
-    0 8px 0 #0369a1,
+    0 7px 0 #0369a1,
 
-    /* Floating shadow */
-    0 14px 24px rgba(2, 132, 199, 0.28),
-
-    /* Glow */
-    0 0 18px rgba(14, 165, 233, 0.20),
+    /* 4-sided floating glow */
+    0 0 18px rgba(2, 132, 199, 0.25),
 
     /* Top shine */
     inset 0 2px 2px rgba(255, 255, 255, 0.45),
 
     /* Bottom depth */
-    inset 0 -3px 4px rgba(0, 0, 0, 0.12);
+    inset 0 -3px 4px rgba(0, 0, 0, 0.10);
 
   transform: translateY(0);
 
@@ -361,11 +306,9 @@
 
   box-shadow:
 
-    0 11px 0 #0369a1,
+    0 9px 0 #0369a1,
 
-    0 20px 32px rgba(2, 132, 199, 0.32),
-
-    0 0 22px rgba(14, 165, 233, 0.28),
+    0 0 24px rgba(2, 132, 199, 0.30),
 
     inset 0 2px 3px rgba(255, 255, 255, 0.50),
 
@@ -375,13 +318,13 @@
 
 .btn-3d-blue:active {
 
-  transform: translateY(6px);
+  transform: translateY(5px);
 
   box-shadow:
 
     0 2px 0 #0369a1,
 
-    0 5px 10px rgba(2, 132, 199, 0.20),
+    0 0 10px rgba(2, 132, 199, 0.18),
 
     inset 0 3px 5px rgba(0, 0, 0, 0.16);
 }
@@ -435,52 +378,19 @@
    ========================================================================== */
 
 .floating-card {
-
   background: rgba(255, 255, 255, 0.88);
-
   border: 1px solid rgba(255, 255, 255, 0.95);
-
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-
-  box-shadow:
-
-    0 16px 32px rgba(15, 23, 42, 0.20),
-
-    0 6px 12px rgba(15, 23, 42, 0.12),
-
-    0 0 15px rgba(14, 165, 233, 0.10),
-
-    inset 0 2px 3px rgba(255, 255, 255, 1),
-
-    inset 0 -2px 3px rgba(15, 23, 42, 0.04);
-
-  transform:
-    translate3d(0, 0, 0);
-
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 0 24px rgba(15, 23, 42, 0.09);
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s ease;
 }
 
-
 .floating-card:hover {
-
-  transform:
-    translate3d(0, -8px, 0)
-    scale(1.01);
-
-  box-shadow:
-
-    0 25px 50px rgba(15, 23, 42, 0.25),
-
-    0 10px 20px rgba(15, 23, 42, 0.15),
-
-    0 0 22px rgba(14, 165, 233, 0.18),
-
-    inset 0 2px 3px #ffffff,
-
-    inset 0 -2px 3px rgba(15, 23, 42, 0.04);
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 0 34px rgba(15, 23, 42, 0.14);
 }
 
 

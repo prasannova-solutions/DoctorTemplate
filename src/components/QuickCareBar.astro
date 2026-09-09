@@ -48,17 +48,17 @@ const popularConditions = [
 <!-- DESKTOP QUICK CARE BAR (hidden on mobile, block on md+) -->
 <section class="hidden md:block w-full px-3 py-6 -mt-8 relative z-30">
     <div class="mx-auto max-w-[1340px]">
-        <div class="glass-panel-elevated rounded-3xl p-6">
+        <div class="glass-panel-elevated elevation-8 rounded-3xl p-6 transition-all duration-300 hover:elevation-12">
             <!-- 4 Column Quick Actions -->
             <div class="grid grid-cols-4 gap-4">
                 {
                     quickActions.map((action) => (
                         <a
                             href={action.href}
-                            class={`group relative p-5 rounded-2xl border transition-transform duration-200 flex flex-col justify-between ${
+                            class={`group relative p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between ${
                                 action.primary
-                                    ? "bg-gradient-to-br from-sky-600 to-sky-700 text-white border-sky-500 shadow-sm hover:shadow-md hover:-translate-y-1"
-                                    : "bg-white/85 hover:bg-white text-slate-900 border-white/90 shadow-xs hover:shadow-md hover:-translate-y-1"
+                                    ? "bg-gradient-to-br from-sky-600 to-sky-700 text-white border-sky-500 elevation-4 hover:elevation-8 hover:-translate-y-1"
+                                    : "elevated-card hover:-translate-y-1"
                             }`}
                         >
                             <div class="flex items-start justify-between">
@@ -121,7 +121,7 @@ const popularConditions = [
 
 <!-- MOBILE QUICK CARE BAR (block on mobile, hidden on md+) -->
 <section class="block md:hidden px-2 py-4">
-    <div class="glass-panel-elevated rounded-2xl p-3.5">
+    <div class="glass-panel-elevated elevation-6 rounded-2xl p-3.5">
         <div class="flex items-center justify-between mb-3 px-1">
             <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Direct Patient Access</span>
             <span class="text-[10px] font-medium text-sky-700">Mayo Model Care</span>
@@ -133,10 +133,10 @@ const popularConditions = [
                 quickActions.map((action) => (
                     <a
                         href={action.href}
-                        class={`p-3 rounded-xl border flex flex-col justify-between transition-colors ${
+                        class={`p-3 rounded-xl border flex flex-col justify-between transition-all ${
                             action.primary
-                                ? "bg-sky-600 text-white border-sky-500 shadow-xs"
-                                : "bg-white/90 text-slate-800 border-slate-200/90 shadow-xs active:bg-sky-50"
+                                ? "bg-sky-600 text-white border-sky-500 elevation-2 active:scale-[0.98]"
+                                : "elevated-card active:bg-sky-50 active:scale-[0.98]"
                         }`}
                     >
                         <div class="flex items-center justify-between mb-2">
