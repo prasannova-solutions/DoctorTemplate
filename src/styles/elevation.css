@@ -1,0 +1,208 @@
+/* ==========================================================================
+   ELEVATION & 3D FLOATING GLASS SYSTEM (CENTRALIZED TOKENS)
+   Modify shadow intensities, colors, and elevations in this single file.
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     SHADOW COLOR TOKENS (Darker, High-Strength 3D Floating Depths)
+     ========================================================================== */
+  /* Deep obsidian/slate-950 core for maximum 3D contrast */
+  --shadow-umbra: rgba(2, 6, 23, 0.42);
+  --shadow-penumbra: rgba(15, 23, 42, 0.32);
+  --shadow-ambient: rgba(15, 23, 42, 0.22);
+  --shadow-contact: rgba(2, 6, 23, 0.18);
+  
+  /* Ambient atmospheric medical glow (light refracting through glass) */
+  --shadow-glow: rgba(14, 165, 233, 0.25);
+  --shadow-glow-hover: rgba(2, 132, 199, 0.35);
+
+  /* Specular top rim border & highlight */
+  --glass-rim-top: rgba(255, 255, 255, 0.98);
+  --glass-rim-inner: rgba(255, 255, 255, 0.95);
+  --glass-border-color: rgba(255, 255, 255, 0.88);
+
+  /* Glass surface background tints */
+  --glass-bg-base: rgba(255, 255, 255, 0.76);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.84);
+  --glass-bg-pill: rgba(255, 255, 255, 0.72);
+  --glass-bg-card: rgba(255, 255, 255, 0.82);
+  --glass-bg-hover: rgba(255, 255, 255, 0.96);
+
+  /* ==========================================================================
+     ELEVATION SCALE TOKENS (Multi-layered 3D Air Floating Shadows)
+     ========================================================================== */
+  --shadow-elevation-1: 
+    0 2px 6px -1px var(--shadow-penumbra),
+    0 1px 4px -1px var(--shadow-ambient);
+
+  --shadow-elevation-2: 
+    0 4px 12px -2px var(--shadow-penumbra),
+    0 2px 6px -1px var(--shadow-ambient);
+
+  --shadow-elevation-4: 
+    0 10px 25px -4px var(--shadow-penumbra),
+    0 4px 10px -2px var(--shadow-ambient),
+    0 2px 8px 0 var(--shadow-glow);
+
+  --shadow-elevation-6: 
+    0 16px 35px -6px var(--shadow-umbra),
+    0 8px 16px -3px var(--shadow-penumbra),
+    0 4px 12px 0 var(--shadow-glow);
+
+  --shadow-elevation-8: 
+    0 24px 48px -8px var(--shadow-umbra),
+    0 12px 24px -4px var(--shadow-penumbra),
+    0 6px 18px 0 var(--shadow-glow);
+
+  --shadow-elevation-12: 
+    0 32px 64px -12px var(--shadow-umbra),
+    0 16px 30px -6px var(--shadow-penumbra),
+    0 8px 24px 0 var(--shadow-glow);
+
+  --shadow-elevation-16: 
+    0 44px 80px -14px var(--shadow-umbra),
+    0 20px 36px -8px var(--shadow-penumbra),
+    0 10px 30px 0 var(--shadow-glow-hover);
+}
+
+/* ==========================================================================
+   UTILITY CLASSES - USE ANYWHERE IN THE PROJECT
+   ========================================================================== */
+
+/* GPU Compositing Optimization Helper */
+.gpu-layer {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Elevation Hierarchy */
+.elevation-1 {
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.elevation-2 {
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.elevation-4 {
+  box-shadow: var(--shadow-elevation-4);
+}
+
+.elevation-6 {
+  box-shadow: var(--shadow-elevation-6);
+}
+
+.elevation-8 {
+  box-shadow: var(--shadow-elevation-8);
+}
+
+.elevation-12 {
+  box-shadow: var(--shadow-elevation-12);
+}
+
+.elevation-16 {
+  box-shadow: var(--shadow-elevation-16);
+}
+
+/* ==========================================================================
+   FROSTED BLUR GLASS PANELS (3D Floating Air Physical Presence)
+   ========================================================================== */
+.glass-panel {
+  background: var(--glass-bg-base);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid var(--glass-border-color);
+  box-shadow: 
+    0 14px 34px -6px var(--shadow-umbra),
+    0 6px 16px -3px var(--shadow-penumbra),
+    0 2px 10px 0 var(--shadow-glow),
+    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+.glass-panel-elevated {
+  background: var(--glass-bg-elevated);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-rim-top);
+  box-shadow: 
+    0 22px 48px -8px var(--shadow-umbra),
+    0 10px 22px -4px var(--shadow-penumbra),
+    0 4px 16px 0 var(--shadow-glow),
+    inset 0 2px 2px 0 #ffffff;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* 3D Floating Interactive Cards with Zero-Lag Hover Levitation */
+.elevated-card {
+  background: var(--glass-bg-card);
+  backdrop-filter: blur(12px) saturate(170%);
+  -webkit-backdrop-filter: blur(12px) saturate(170%);
+  border: 1px solid var(--glass-border-color);
+  box-shadow: 
+    0 12px 28px -4px var(--shadow-penumbra),
+    0 4px 12px -2px var(--shadow-ambient),
+    0 2px 8px 0 var(--shadow-glow),
+    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.28s ease, 
+              border-color 0.28s ease;
+}
+
+.elevated-card:hover {
+  transform: translate3d(0, -6px, 0);
+  background: var(--glass-bg-hover);
+  border-color: rgba(186, 230, 253, 1);
+  box-shadow: 
+    0 28px 56px -8px var(--shadow-umbra),
+    0 14px 28px -4px var(--shadow-glow-hover),
+    0 4px 14px 0 var(--shadow-contact),
+    inset 0 2px 2px 0 #ffffff;
+}
+
+/* Floating Glass Pill (Capsule Navbar) */
+.glass-pill {
+  background: var(--glass-bg-pill);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border-color);
+  box-shadow: 
+    0 16px 36px -6px var(--shadow-umbra),
+    0 6px 16px -2px var(--shadow-penumbra),
+    0 2px 12px 0 var(--shadow-glow),
+    inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   ZERO-JS FLOATING LEVITATION KEYFRAME ANIMATIONS (Pure GPU Compositing)
+   ========================================================================== */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+.floating-air {
+  animation: float-subtle 4s ease-in-out infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.floating-air-delayed {
+  animation: float-subtle 4.5s ease-in-out 1.5s infinite;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  will-change: transform;
+}
