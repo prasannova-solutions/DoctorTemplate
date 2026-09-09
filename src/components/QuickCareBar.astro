@@ -46,7 +46,7 @@ const popularConditions = [
 ---
 
 <!-- DESKTOP QUICK CARE BAR (hidden on mobile, block on md+) -->
-<section class="hidden md:block w-full px-3 py-6 -mt-8 relative z-30">
+<section class="hidden md:block w-full px-3 py-6 mt-5 relative z-30">
     <div class="mx-auto max-w-[1340px]">
         <div class="glass-panel-elevated elevation-8 rounded-3xl p-6 transition-all duration-300 hover:elevation-12">
             <!-- 4 Column Quick Actions -->
@@ -57,7 +57,7 @@ const popularConditions = [
                             href={action.href}
                             class={`group relative p-5 rounded-2xl border transition-all duration-200 flex flex-col justify-between ${
                                 action.primary
-                                    ? "bg-gradient-to-br from-sky-600 to-sky-700 text-white border-sky-500 elevation-4 hover:elevation-8 hover:-translate-y-1"
+                                    ? "bg-gradient-to-br from-sky-600 to-sky-700 text-white border-sky-500 btn-elevated-primary hover:-translate-y-1"
                                     : "elevated-card hover:-translate-y-1"
                             }`}
                         >
@@ -135,12 +135,12 @@ const popularConditions = [
                         href={action.href}
                         class={`p-3 rounded-xl border flex flex-col justify-between transition-all ${
                             action.primary
-                                ? "bg-sky-600 text-white border-sky-500 elevation-2 active:scale-[0.98]"
+                                ? "bg-sky-600 text-white border-sky-500 btn-elevated-primary"
                                 : "elevated-card active:bg-sky-50 active:scale-[0.98]"
                         }`}
                     >
                         <div class="flex items-center justify-between mb-2">
-                            <div class={`w-7 h-7 rounded-lg flex items-center justify-center ${
+                            <div class={`w-7 h-7 rounded-lg flex items-center justify-center pointer-events-none ${
                                 action.primary ? "bg-white/20 text-white" : "bg-sky-50 text-sky-600"
                             }`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={action.icon} />

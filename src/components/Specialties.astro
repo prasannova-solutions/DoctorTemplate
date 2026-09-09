@@ -94,7 +94,7 @@ const specialties = [
                 <!-- Physician Badge -->
                 <div class="hidden lg:flex items-center gap-3 px-4 py-2 rounded-2xl glass-panel-elevated">
                     <img 
-                        src="/Hero/DesktopHeroCutout.png" 
+                        src="/DeepaliPatilProfile.png" 
                         alt="Dr. Deepali Patil" 
                         class="w-11 h-11 rounded-full object-cover object-top border-2 border-white shadow-xs bg-sky-100"
                     />
@@ -106,7 +106,7 @@ const specialties = [
 
                 <a
                     href="#appointment"
-                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm shadow-md shadow-sky-600/25 transition-all"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm btn-elevated-primary"
                 >
                     Schedule a Consultation
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -116,82 +116,53 @@ const specialties = [
             </div>
         </div>
 
-        <!-- 3 Column Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Single Row: All 6 Specialties side-by-side on desktop -->
+        <div class="grid grid-flow-col auto-cols-[minmax(210px,1fr)] lg:auto-cols-fr lg:grid-cols-6 gap-3.5 xl:gap-4 overflow-x-auto no-scrollbar pb-3 pt-1">
             {
                 specialties.map((spec) => (
-                    <div class="group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between transition-[transform,box-shadow] duration-200">
+                    <div class="group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between transition-all duration-300 hover:elevation-8 hover:-translate-y-1">
                         <div>
                             <!-- Card Hero Image with Clean Specular Badges -->
-                            <div class="relative h-48 w-full overflow-hidden bg-slate-100">
+                            <div class="relative h-36 w-full overflow-hidden bg-slate-100">
                                 <img 
                                     src={spec.image} 
                                     alt={spec.title} 
                                     class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300 ease-out"
                                     loading="lazy"
                                     decoding="async"
-                                    width="600"
-                                    height="340"
+                                    width="400"
+                                    height="240"
                                 />
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent"></div>
+                              
                                 
-                                <!-- Specular Badge on top left/right (zero nested blur for maximum 60fps performance) -->
-                                <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                                    <span class="text-[11px] font-bold px-3 py-1 rounded-full text-slate-900 bg-white/95 border border-white shadow-xs">
-                                        {spec.badge}
-                                    </span>
-                                    <div class="w-9 h-9 rounded-xl bg-white/95 border border-white text-sky-700 flex items-center justify-center shadow-xs">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={spec.icon} />
-                                    </div>
-                                </div>
-                                
-                                <div class="absolute bottom-3 left-4 right-4">
-                                    <p class="text-xs font-bold text-sky-200 uppercase tracking-wider drop-shadow-sm">
-                                        {spec.subtitle}
-                                    </p>
-                                </div>
                             </div>
 
                             <!-- Content Area -->
-                            <div class="p-6">
-                                <h3 class="text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                            <div class="p-4">
+                                <h3 class="text-sm font-bold text-slate-900 leading-snug group-hover:text-sky-600 transition-colors line-clamp-2">
                                     {spec.title}
                                 </h3>
 
-                                <p class="mt-2.5 text-sm text-slate-600 leading-relaxed">
+                                <p class="mt-1.5 text-xs text-slate-600 leading-relaxed line-clamp-2">
                                     {spec.desc}
                                 </p>
 
-                                <!-- Key Focus Chips -->
-                                <div class="mt-4 pt-3 border-t border-slate-100">
-                                    <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                                        Clinical Focus:
-                                    </p>
-                                    <div class="flex flex-wrap gap-1.5">
-                                        {
-                                            spec.conditions.map((cond) => (
-                                                <span class="text-xs px-2.5 py-1 rounded-lg bg-slate-50 text-slate-700 font-medium border border-slate-100">
-                                                    {cond}
-                                                </span>
-                                            ))
-                                        }
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
 
                         <!-- Action Link -->
-                        <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between">
+                        <div class="px-4 pb-4 pt-2 border-t border-slate-100 flex items-center justify-between">
                             <a
                                 href="#appointment"
-                                class="inline-flex items-center gap-1.5 text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors group-hover:translate-x-1 duration-200"
+                                class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors group-hover:translate-x-0.5 duration-200"
                             >
-                                Book Care for this Specialty
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                Book Care
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                                 </svg>
                             </a>
-                            <span class="text-slate-400 text-xs">• In-Clinic & Telehealth</span>
+                            <span class="text-slate-400 text-[10px]">• In-Clinic</span>
                         </div>
                     </div>
                 ))
@@ -214,7 +185,7 @@ const specialties = [
                 <button 
                     id="spec-prev-btn" 
                     aria-label="Previous specialty"
-                    class="w-7 h-7 rounded-full glass-pill flex items-center justify-center text-slate-700 active:scale-95 transition-all shadow-xs"
+                    class="w-7 h-7 rounded-full bg-white flex items-center justify-center text-slate-700 btn-elevated-secondary cursor-pointer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
@@ -223,7 +194,7 @@ const specialties = [
                 <button 
                     id="spec-next-btn" 
                     aria-label="Next specialty"
-                    class="w-7 h-7 rounded-full glass-pill flex items-center justify-center text-slate-700 active:scale-95 transition-all shadow-xs"
+                    class="w-7 h-7 rounded-full bg-white flex items-center justify-center text-slate-700 btn-elevated-secondary cursor-pointer"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
@@ -234,7 +205,7 @@ const specialties = [
         
         <div class="flex items-center gap-3">
             <img 
-                src="/Hero/MobileHeroCutout.png" 
+                src="/DeepaliPatilProfile.png" 
                 alt="Dr. Deepali Patil" 
                 class="w-11 h-11 rounded-full object-cover object-top border-2 border-sky-300 shadow-xs bg-sky-50 flex-shrink-0"
             />
@@ -255,7 +226,7 @@ const specialties = [
                     data-spec-target={index}
                     class={`spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border ${
                         index === 0 
-                            ? "bg-sky-600 text-white border-sky-600 shadow-xs" 
+                            ? "bg-sky-600 text-white border-sky-600 elevation-2" 
                             : "bg-white/90 text-slate-700 border-slate-200/80 hover:bg-sky-50"
                     }`}
                 >
@@ -317,16 +288,7 @@ const specialties = [
                                 {spec.desc}
                             </p>
 
-                            <!-- Clinical Focus Tags -->
-                            <div class="mt-3 pt-2.5 border-t border-slate-100 flex flex-wrap gap-1">
-                                {
-                                    spec.conditions.slice(0, 3).map((cond) => (
-                                        <span class="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100/90 text-slate-700">
-                                            {cond}
-                                        </span>
-                                    ))
-                                }
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -395,7 +357,7 @@ const specialties = [
 
             tabBtns.forEach((btn, idx) => {
                 if (idx === index) {
-                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-sky-600 text-white border-sky-600 shadow-xs";
+                    btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-sky-600 text-white border-sky-600 elevation-2";
                     btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
                 } else {
                     btn.className = "spec-tab-btn flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-200 border bg-white/90 text-slate-700 border-slate-200/80 hover:bg-sky-50";

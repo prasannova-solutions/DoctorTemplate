@@ -1,0 +1,189 @@
+---
+// BlogSection.astro - Health Education & Insights Carousel (Single Row)
+import { blogPosts } from "../data/blogPosts";
+---
+
+<section id="blog" class="w-full px-6 py-16 relative overflow-hidden">
+    <!-- Ambient Atmospheric Glows -->
+    <div class="absolute top-1/3 left-4 w-96 h-96 bg-sky-300/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute bottom-10 right-8 w-80 h-80 bg-teal-200/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <div class="mx-auto max-w-[1340px]">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+            <div class="max-w-2xl">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/90 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                    Medical Insights & Physician Guidance
+                </div>
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+                    Health Education & <span class="text-sky-600">Clinical Insights</span>
+                </h2>
+                <p class="mt-3 text-slate-600 text-base leading-relaxed">
+                    Evidence-based articles, preventive cardiology advice, and metabolic health guides authored by Dr. Deepali Patil, MD, FACP.
+                </p>
+            </div>
+
+            <!-- Navigation Controls & "View All" Button -->
+            <div class="flex items-center gap-3">
+                <!-- Swipe / Carousel Arrows -->
+                <div class="flex items-center gap-2">
+                    <button
+                        id="blog-prev-btn"
+                        aria-label="Previous article"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:text-sky-600 btn-elevated-secondary transition-all cursor-pointer"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    <button
+                        id="blog-next-btn"
+                        aria-label="Next article"
+                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 hover:text-sky-600 btn-elevated-secondary transition-all cursor-pointer"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Link to dedicated blog page -->
+                <a
+                    href="/blog"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs sm:text-sm btn-elevated-primary transition-all whitespace-nowrap"
+                >
+                    View All Articles
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Single Row Horizontal Carousel Container -->
+        <div
+            id="blog-track"
+            class="grid grid-flow-col auto-cols-[minmax(290px,340px)] md:auto-cols-[minmax(330px,380px)] gap-5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-4 pt-1 px-1 -mx-4 md:mx-0 px-4 md:px-0"
+        >
+            {
+                blogPosts.map((post, idx) => (
+                    <article
+                        data-blog-card={idx}
+                        class="snap-start group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between h-full transition-all duration-300 hover:elevation-8 hover:-translate-y-1 bg-white"
+                    >
+                        <div>
+                            <!-- Article Cover Image -->
+                            <div class="relative h-48 w-full overflow-hidden bg-slate-100">
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="500"
+                                    height="280"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent"></div>
+
+                                <!-- Floating Badges -->
+                                <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                                    <span class="text-[10px] font-bold px-2.5 py-1 rounded-full text-slate-900 bg-white/95 border border-white shadow-xs backdrop-blur-md">
+                                        {post.category}
+                                    </span>
+                                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full text-white bg-slate-900/75 backdrop-blur-md border border-white/20">
+                                        {post.readTime}
+                                    </span>
+                                </div>
+
+                                <!-- Date on bottom left overlay -->
+                                <div class="absolute bottom-2.5 left-3.5 right-3.5">
+                                    <p class="text-[11px] font-medium text-sky-200 drop-shadow-sm">
+                                        {post.publishedDate}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Content Body -->
+                            <div class="p-5">
+                                <h3 class="text-base font-bold text-slate-900 leading-snug group-hover:text-sky-600 transition-colors line-clamp-2 min-h-[2.75rem]">
+                                    <a href={`/blog/${post.slug}`}>
+                                        {post.title}
+                                    </a>
+                                </h3>
+
+                                <p class="mt-2 text-xs text-slate-600 leading-relaxed line-clamp-3 min-h-[3.6rem]">
+                                    {post.excerpt}
+                                </p>
+
+                                
+                            </div>
+                        </div>
+
+                        <!-- Card Action & Author Bar -->
+                        <div class="px-5 pb-5 pt-3 border-t border-slate-100 flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img
+                                    src={post.author.avatar}
+                                    alt={post.author.name}
+                                    class="w-7 h-7 rounded-full object-cover object-top border border-sky-200 bg-sky-50 flex-shrink-0"
+                                />
+                                <span class="text-[11px] font-semibold text-slate-700">
+                                    Dr. Patil
+                                </span>
+                            </div>
+
+                            <a
+                                href={`/blog/${post.slug}`}
+                                class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors group-hover:translate-x-0.5 duration-200"
+                            >
+                                Read Full Article
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                </svg>
+                            </a>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+
+        <!-- Mobile Carousel Navigation & Hint -->
+        <div class="flex md:hidden items-center justify-between mt-3 px-1">
+            <span class="text-[11px] font-semibold text-slate-400">
+                ← Swipe to explore more articles →
+            </span>
+            <a
+                href="/blog"
+                class="text-xs font-bold text-sky-600 inline-flex items-center gap-1"
+            >
+                View all ({blogPosts.length}) →
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Single-Row Carousel Navigation Script -->
+<script>
+    function initBlogCarousel() {
+        const track = document.getElementById("blog-track");
+        const prevBtn = document.getElementById("blog-prev-btn");
+        const nextBtn = document.getElementById("blog-next-btn");
+
+        if (!track || !prevBtn || !nextBtn) return;
+
+        const scrollStep = 360;
+
+        prevBtn.addEventListener("click", () => {
+            track.scrollBy({ left: -scrollStep, behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            track.scrollBy({ left: scrollStep, behavior: "smooth" });
+        });
+    }
+
+    initBlogCarousel();
+    document.addEventListener("astro:page-load", initBlogCarousel);
+</script>
+

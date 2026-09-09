@@ -1,0 +1,306 @@
+---
+// src/pages/blog/index.astro - Dedicated Medical Blog Listing Page
+import Layout from "../../layouts/Layout.astro";
+import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import { blogPosts, getAllCategories } from "../../data/blogPosts";
+
+const categories = getAllCategories();
+const featuredPost = blogPosts[0];
+const remainingPosts = blogPosts.slice(1);
+---
+
+<Layout
+    title="Medical Blog & Clinical Guides | Dr. Deepali Patil, MD, FACP"
+    description="Evidence-based medical articles on hypertension, diabetes reversal, preventive health checkups, chronic fatigue, and women's health by Dr. Deepali Patil."
+>
+    <Navbar brandName="Dr. Deepali Patil" designation="MD, FACP" />
+
+    <main class="pt-28 pb-20 px-4">
+        <div class="mx-auto max-w-[1340px]">
+            
+            <!-- Breadcrumbs & Header -->
+            <div class="mb-10 text-center max-w-3xl mx-auto">
+                <nav class="flex items-center justify-center gap-2 text-xs font-semibold text-slate-500 mb-3" aria-label="Breadcrumb">
+                    <a href="/" class="hover:text-sky-600 transition-colors">Home</a>
+                    <span>/</span>
+                    <span class="text-sky-700">Medical Blog</span>
+                </nav>
+
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/90 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    <span class="w-2 h-2 rounded-full bg-sky-600 animate-pulse"></span>
+                    Physician Health Journal
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    Evidence-Based Insights for <span class="bg-gradient-to-r from-sky-700 via-sky-600 to-teal-700 bg-clip-text text-transparent">Long-Term Health</span>
+                </h1>
+
+                <p class="mt-4 text-base text-slate-600 leading-relaxed">
+                    Practical, research-backed clinical perspectives on cardiovascular wellness, metabolic longevity, and personalized preventive medicine authored by <strong>Dr. Deepali Patil, MD, FACP</strong>.
+                </p>
+            </div>
+
+            <!-- Featured Article Spotlight Banner -->
+            <section class="mb-14">
+                <div class="relative rounded-3xl glass-panel-elevated elevation-8 overflow-hidden bg-white/95 border border-white/90 p-6 sm:p-8 lg:p-10 transition-all hover:elevation-12">
+                    <div class="grid grid-cols-12 gap-8 items-center">
+                        <!-- Featured Image -->
+                        <div class="col-span-12 lg:col-span-7">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[16/9] shadow-md bg-slate-100 group">
+                                <img
+                                    src={featuredPost.image}
+                                    alt={featuredPost.title}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                                    loading="eager"
+                                    width="800"
+                                    height="450"
+                                />
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent"></div>
+                                <div class="absolute top-3 left-3">
+                                    <span class="text-xs font-bold px-3 py-1 rounded-full bg-sky-600 text-white shadow-xs">
+                                        Featured Clinical Guide
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-3 left-4 right-4 text-sky-200 text-xs font-medium">
+                                    Published on {featuredPost.publishedDate} • {featuredPost.readTime}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Text Details -->
+                        <div class="col-span-12 lg:col-span-5 flex flex-col justify-between">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2.5 py-1 rounded-full border border-sky-100">
+                                    {featuredPost.category}
+                                </span>
+
+                                <h2 class="text-2xl lg:text-3xl font-bold text-slate-900 mt-3 leading-snug hover:text-sky-600 transition-colors">
+                                    <a href={`/blog/${featuredPost.slug}`}>
+                                        {featuredPost.title}
+                                    </a>
+                                </h2>
+
+                                <p class="mt-3 text-sm text-slate-600 leading-relaxed">
+                                    {featuredPost.excerpt}
+                                </p>
+
+                                <!-- Key Highlights Box -->
+                                <div class="mt-4 p-3.5 rounded-xl bg-slate-50 border border-slate-100">
+                                    <p class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                                        Clinical Highlights:
+                                    </p>
+                                    <ul class="space-y-1.5">
+                                        {
+                                            featuredPost.keyTakeaways.slice(0, 2).map((takeaway) => (
+                                                <li class="text-xs text-slate-700 flex items-start gap-2">
+                                                    <span class="text-sky-600 font-bold">✓</span>
+                                                    <span>{takeaway}</span>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+                                <div class="flex items-center gap-2.5">
+                                    <img
+                                        src={featuredPost.author.avatar}
+                                        alt={featuredPost.author.name}
+                                        class="w-8 h-8 rounded-full object-cover object-top border border-sky-200 bg-sky-50"
+                                    />
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-900 leading-none">{featuredPost.author.name}</p>
+                                        <p class="text-[10px] text-slate-500 font-medium mt-0.5">{featuredPost.author.role}</p>
+                                    </div>
+                                </div>
+
+                                <a
+                                    href={`/blog/${featuredPost.slug}`}
+                                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs btn-elevated-primary transition-all"
+                                >
+                                    Read Full Article →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- All Articles Section Header & Category Filter Tabs -->
+            <section class="mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+                    <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+                        All Medical Articles ({blogPosts.length})
+                    </h2>
+
+                    <!-- Category Filter Buttons -->
+                    <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+                        {
+                            categories.map((cat, idx) => (
+                                <button
+                                    data-filter={cat}
+                                    class={`filter-btn text-xs font-bold px-3.5 py-1.5 rounded-full transition-all border ${
+                                        idx === 0
+                                            ? "bg-sky-600 text-white border-sky-600 elevation-2"
+                                            : "bg-white text-slate-700 border-slate-200 hover:bg-sky-50"
+                                    }`}
+                                >
+                                    {cat}
+                                </button>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Articles Grid -->
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="blog-grid">
+                    {
+                        blogPosts.map((post) => (
+                            <article
+                                data-category={post.category}
+                                class="post-item group relative rounded-3xl elevated-card overflow-hidden flex flex-col justify-between h-full bg-white transition-all duration-300 hover:elevation-8 hover:-translate-y-1"
+                            >
+                                <div>
+                                    <!-- Cover Image -->
+                                    <div class="relative h-52 w-full overflow-hidden bg-slate-100">
+                                        <img
+                                            src={post.image}
+                                            alt={post.title}
+                                            class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
+                                            loading="lazy"
+                                            decoding="async"
+                                            width="600"
+                                            height="340"
+                                        />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-950/15 to-transparent"></div>
+
+                                        <!-- Badges -->
+                                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                                            <span class="text-[11px] font-bold px-3 py-1 rounded-full text-slate-900 bg-white/95 border border-white shadow-xs backdrop-blur-md">
+                                                {post.category}
+                                            </span>
+                                            <span class="text-[10px] font-semibold px-2.5 py-0.5 rounded-full text-white bg-slate-900/75 backdrop-blur-md border border-white/20">
+                                                {post.readTime}
+                                            </span>
+                                        </div>
+
+                                        <div class="absolute bottom-3 left-4 right-4">
+                                            <p class="text-[11px] font-medium text-sky-200 drop-shadow-sm">
+                                                {post.publishedDate}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div class="p-6">
+                                        <h3 class="text-lg font-bold text-slate-900 leading-snug group-hover:text-sky-600 transition-colors line-clamp-2 min-h-[3.25rem]">
+                                            <a href={`/blog/${post.slug}`}>
+                                                {post.title}
+                                            </a>
+                                        </h3>
+
+                                        <p class="mt-2 text-xs text-slate-600 leading-relaxed line-clamp-3 min-h-[3.6rem]">
+                                            {post.excerpt}
+                                        </p>
+
+                                        <!-- Tags -->
+                                        <div class="mt-4 pt-3 border-t border-slate-100 flex flex-wrap gap-1.5">
+                                            {
+                                                post.tags.slice(0, 3).map((tag) => (
+                                                    <span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 font-medium border border-slate-100">
+                                                        #{tag}
+                                                    </span>
+                                                ))
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Footer -->
+                                <div class="px-6 pb-6 pt-3 border-t border-slate-100 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <img
+                                            src={post.author.avatar}
+                                            alt={post.author.name}
+                                            class="w-7 h-7 rounded-full object-cover object-top border border-sky-200 bg-sky-50 flex-shrink-0"
+                                        />
+                                        <span class="text-xs font-semibold text-slate-700">
+                                            {post.author.name}
+                                        </span>
+                                    </div>
+
+                                    <a
+                                        href={`/blog/${post.slug}`}
+                                        class="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors group-hover:translate-x-0.5 duration-200"
+                                    >
+                                        Read Article
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </article>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Bottom Patient Care Consultation Banner -->
+            <div class="mt-16 rounded-3xl glass-panel-elevated elevation-8 p-8 lg:p-10 bg-gradient-to-r from-sky-600 to-sky-700 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+                <div>
+                    <h3 class="text-2xl lg:text-3xl font-extrabold tracking-tight">
+                        Have Questions About Your Medical Health?
+                    </h3>
+                    <p class="mt-2 text-sky-100 text-sm max-w-xl leading-relaxed">
+                        Dr. Deepali Patil provides thorough diagnostic assessments and personalized, unhurried consultations at our clinic.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3 flex-shrink-0">
+                    <a
+                        href="/#appointment"
+                        class="px-6 py-3.5 rounded-full bg-white text-sky-700 font-bold text-sm hover:bg-sky-50 shadow-md transition-all whitespace-nowrap"
+                    >
+                        Schedule an Appointment →
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <Footer />
+</Layout>
+
+<!-- Client-side Category Filtering Script -->
+<script>
+    function initBlogFilter() {
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const postItems = document.querySelectorAll(".post-item");
+
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const category = btn.getAttribute("data-filter");
+
+                filterBtns.forEach((b) => {
+                    b.className = "filter-btn text-xs font-bold px-3.5 py-1.5 rounded-full transition-all border bg-white text-slate-700 border-slate-200 hover:bg-sky-50";
+                });
+                btn.className = "filter-btn text-xs font-bold px-3.5 py-1.5 rounded-full transition-all border bg-sky-600 text-white border-sky-600 elevation-2";
+
+                postItems.forEach((item) => {
+                    const postCat = item.getAttribute("data-category");
+                    if (category === "All" || postCat === category) {
+                        (item as HTMLElement).style.display = "flex";
+                    } else {
+                        (item as HTMLElement).style.display = "none";
+                    }
+                });
+            });
+        });
+    }
+
+    initBlogFilter();
+    document.addEventListener("astro:page-load", initBlogFilter);
+</script>
+

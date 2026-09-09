@@ -78,7 +78,7 @@ const clinicDetails = {
                     href={clinicDetails.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs elevation-2 hover:elevation-4 border border-slate-200 transition-all group"
+                    class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-white hover:bg-slate-50 text-slate-800 font-bold text-xs btn-elevated-secondary border border-slate-200 group"
                 >
                     <svg class="w-4 h-4 text-rose-500 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -140,7 +140,7 @@ const clinicDetails = {
                     <div class="grid grid-cols-2 gap-3 mb-5">
                         <button
                             id="desktop-copy-address-btn"
-                            class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200 elevation-1 hover:elevation-2 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                            class="py-2.5 px-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200 btn-elevated-secondary flex items-center justify-center gap-1.5 cursor-pointer"
                             data-address={`${clinicDetails.name}, ${clinicDetails.address.line1}, ${clinicDetails.address.line2}, ${clinicDetails.address.city}, ${clinicDetails.address.state} ${clinicDetails.address.postalCode}`}
                         >
                             <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -153,7 +153,7 @@ const clinicDetails = {
                             href={clinicDetails.googleMapsUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="py-2.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs elevation-2 hover:elevation-4 transition-all flex items-center justify-center gap-1.5"
+                            class="py-2.5 px-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs btn-elevated-primary flex items-center justify-center gap-1.5"
                         >
                             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -333,7 +333,7 @@ const clinicDetails = {
                 href={clinicDetails.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="py-2.5 px-2 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 elevation-2 active:scale-95 transition-transform"
+                class="py-2.5 px-2 rounded-xl bg-sky-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 btn-elevated-primary"
             >
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />

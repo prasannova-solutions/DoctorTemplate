@@ -1,12 +1,36 @@
 ---
 // AboutDoctor.astro - Biography & Philosophy of Dr. Deepali Patil, MD
 const credentials = [
-    { label: "Medical Degree", val: "MBBS, MD (Internal Medicine)" },
-    { label: "Fellowship", val: "Fellow of American College of Physicians (FACP)" },
-    { label: "Experience", val: "18+ Years Clinical Practice" },
-    { label: "Specialty Focus", val: "Cardiometabolic & Preventive Medicine" },
-    { label: "Accreditation", val: "IMA & API Life Member" },
-    { label: "Publications", val: "40+ Clinical Papers in Peer Journals" },
+    { 
+        label: "Medical Degree", 
+        val: "MBBS, MD (Internal Medicine)",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5" />`
+    },
+    { 
+        label: "Fellowship", 
+        val: "Fellow of American College of Physicians (FACP)",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />`
+    },
+    { 
+        label: "Clinical Experience", 
+        val: "18+ Years Practice",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />`
+    },
+    { 
+        label: "Specialty Focus", 
+        val: "Cardiometabolic & Preventive Care",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />`
+    },
+    { 
+        label: "Accreditation", 
+        val: "IMA & API Life Member",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />`
+    },
+    { 
+        label: "Research & Papers", 
+        val: "40+ Clinical Papers in Journals",
+        icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />`
+    },
 ];
 
 const carePillars = [
@@ -34,64 +58,141 @@ const carePillars = [
 ---
 
 <!-- ================= DESKTOP ABOUT SECTION ================= -->
-<section id="about" class="hidden md:block w-full px-4 py-16 bg-gradient-to-b from-transparent via-sky-50/50 to-transparent">
+<section id="about" class="hidden md:block w-full px-4 py-20 bg-gradient-to-b from-transparent via-sky-50/40 to-transparent relative overflow-hidden">
+    
+    <!-- Atmospheric Ambient Glows -->
+    <div class="absolute top-1/4 left-8 w-96 h-96 bg-sky-300/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="absolute bottom-12 right-16 w-80 h-80 bg-teal-200/20 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
     <div class="mx-auto max-w-[1340px]">
-        <div class="grid grid-cols-12 gap-10 items-center">
+        <div class="grid grid-cols-12 gap-10 lg:gap-12 items-center">
             
-            <!-- Left Column: Doctor Profile Card & Credentials -->
-            <div class="col-span-5">
-                <div class="relative rounded-3xl glass-panel-elevated elevation-6 p-7 overflow-hidden">
-                    <!-- Subtle badge overlay -->
-                    <div class="flex items-center gap-3 mb-6">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-600 to-teal-400 flex items-center justify-center text-white text-2xl font-black shadow-md shadow-sky-600/25">
-                            DP
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-slate-900 leading-tight">Dr. Deepali Patil</h3>
-                            <p class="text-xs font-semibold text-sky-700 uppercase tracking-wider">MD, FACP • Senior Consultant</p>
-                            <div class="flex items-center gap-1 mt-1 text-[11px] text-emerald-600 font-medium">
-                                <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+            <!-- Left Column: Doctor 3D Cutout Showcase Card + Philosophy Quote -->
+            <div class="col-span-12 lg:col-span-5">
+                <div class="relative group">
+                    
+                    <!-- Ambient Glow Behind Card -->
+                    <div class="absolute -inset-1.5 bg-gradient-to-tr from-sky-500/20 via-teal-400/20 to-sky-300/15 rounded-[32px] blur-xl opacity-75 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
+
+                    <!-- Main Glass Card Container -->
+                    <div class="relative rounded-3xl glass-panel-elevated elevation-8 overflow-hidden bg-gradient-to-b from-white/95 via-sky-50/80 to-sky-100/70 border border-white/90">
+                        
+                        <!-- Top Header Status Badges -->
+                        <div class="relative z-30 pt-5 px-5 flex items-center justify-between gap-2">
+                            <!-- Live Status Badge -->
+                            <div class="glass-pill elevation-2 px-3 py-1.5 rounded-full flex items-center gap-2 bg-white/90 backdrop-blur-md border border-white/80">
+                                <span class="relative flex h-2.5 w-2.5">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                                </span>
+                                <span class="text-[11px] font-bold text-slate-800 tracking-tight">Verified Specialist</span>
+                            </div>
+
+                            <!-- Experience Chip -->
+                            <div class="glass-pill elevation-2 px-3 py-1.5 rounded-full flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-white/80">
+                                <svg class="w-3.5 h-3.5 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                                 </svg>
-                                Verified Medical Specialist
+                                <span class="text-[11px] font-bold text-slate-800">18+ Yrs Practice</span>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Credential Table -->
-                    <div class="space-y-3 pt-2">
-                        {
-                            credentials.map((cred) => (
-                                <div class="flex items-start justify-between py-2 border-b border-slate-100 last:border-b-0 text-xs">
-                                    <span class="font-semibold text-slate-500 w-36 flex-shrink-0">{cred.label}:</span>
-                                    <span class="font-bold text-slate-800 text-right">{cred.val}</span>
+                        <!-- Concentric Glass Halo Circles behind doctor's head & shoulders -->
+                        <div class="absolute top-14 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full border border-sky-200/50 bg-gradient-to-b from-sky-200/30 via-teal-100/20 to-transparent pointer-events-none"></div>
+                        <div class="absolute top-24 left-1/2 -translate-x-1/2 w-52 h-52 rounded-full border border-white/70 bg-white/20 pointer-events-none"></div>
+
+                        <!-- Cutout Doctor Image with 3D Drop Shadow & Pop-out Staging -->
+                        <div class="relative z-10 flex justify-center items-end px-4 pt-1 h-[470px] lg:h-[510px]">
+                            <img
+                                src="/DeepaliPatil.png"
+                                alt="Dr. Deepali Patil, MD, FACP - Senior Consultant Physician"
+                                class="
+                                    h-full
+                                    w-auto
+                                    rounded-3xl
+                                    max-w-none
+                                    object-contain
+                                    object-bottom
+                                    pointer-events-none
+                                    filter
+                                    drop-shadow-[0_20px_25px_rgba(14,165,233,0.22)]
+                                    drop-shadow-[0_8px_14px_rgba(15,23,42,0.12)]
+                                    transition-transform duration-500 ease-out group-hover:scale-[1.02]
+                                "
+                                loading="eager"
+                            />
+
+                            <!-- Floating Glass Pill Left: Rating & Trust -->
+                            <div class="absolute bottom-20 -left-1 z-30 glass-panel-elevated elevation-6 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-white shadow-lg transition-transform duration-300 group-hover:-translate-y-1">
+                                <div class="w-7 h-7 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold text-xs shadow-xs">
+                                    ★
                                 </div>
-                            ))
-                        }
-                    </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Patient Trust</p>
+                                    <p class="text-xs font-bold text-slate-800">4.9 / 5.0 (1,200+)</p>
+                                </div>
+                            </div>
 
-                    <!-- Philosophy Quote Box -->
-                    <div class="mt-6 p-4 rounded-2xl bg-sky-50/90 border border-sky-100/90 relative elevation-1">
-                        <svg class="w-6 h-6 text-sky-300 absolute top-3 left-3" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                        </svg>
-                        <p class="text-xs italic text-slate-700 pl-7 leading-relaxed font-medium">
-                            "The best interest of the patient is the only interest to be considered. Healthcare begins by listening patiently and discovering what lies behind the symptoms."
-                        </p>
-                        <p class="text-[11px] font-bold text-sky-800 text-right mt-2">— Dr. Deepali Patil, MD</p>
+                            <!-- Floating Glass Pill Right: Accreditation -->
+                            <div class="absolute bottom-28 -right-1 z-30 glass-panel-elevated elevation-6 px-3.5 py-2 rounded-2xl flex items-center gap-2.5 bg-white/95 backdrop-blur-md border border-white shadow-lg transition-transform duration-300 group-hover:-translate-y-1">
+                                <div class="w-7 h-7 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Fellowship</p>
+                                    <p class="text-xs font-bold text-slate-800">FACP Fellow (USA)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Frosted Glass Pedestal / Identity Overlay Bar at Base -->
+                        <div class="relative z-30 p-4 bg-white/90 backdrop-blur-xl border-t border-white/90 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold text-slate-900 leading-tight">Dr. Deepali Patil</h3>
+                                <p class="text-xs font-semibold text-sky-700 uppercase tracking-wider">MD, FACP • Senior Consultant Physician</p>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Cardiometabolic & Preventive Medicine</p>
+                            </div>
+                            <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-sky-600 to-teal-400 flex items-center justify-center text-white font-bold text-sm shadow-md shadow-sky-600/25">
+                                DP
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
+                <!-- Philosophy Quote Box under Doctor Card -->
+                <div class="mt-5 p-4 rounded-2xl bg-sky-50/90 border border-sky-100/90 relative elevation-2 glass-panel">
+                    <svg class="w-6 h-6 text-sky-300 absolute top-3 left-3" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <p class="text-xs italic text-slate-700 pl-7 leading-relaxed font-medium">
+                        "The best interest of the patient is the only interest to be considered. Healthcare begins by listening patiently and discovering what lies behind the symptoms."
+                    </p>
+                    <p class="text-[11px] font-bold text-sky-800 text-right mt-2">— Dr. Deepali Patil, MD</p>
+                </div>
+
             </div>
 
-            <!-- Right Column: Biography & Care Pillars -->
-            <div class="col-span-7">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/80 text-sky-800 text-xs font-bold uppercase tracking-wider mb-3">
-                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
-                    Meet Your Physician
+            <!-- Right Column: Biography, Interactive Credentials Grid & Care Pillars -->
+            <div class="col-span-12 lg:col-span-7">
+                
+                <!-- Eyebrow Badges -->
+                <div class="flex items-center gap-2.5 flex-wrap mb-3">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-100/80 text-sky-800 text-xs font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                        Meet Your Physician
+                    </div>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-teal-50 text-teal-700 text-xs font-semibold border border-teal-100">
+                        Mayo Clinic Model of Care
+                    </span>
                 </div>
+
                 <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
                     Dedicated to Clinical Excellence & Compassionate Healing
                 </h2>
+                
                 <p class="mt-4 text-base text-slate-600 leading-relaxed">
                     With over 18 years of clinical leadership across leading healthcare systems and outpatient specialty clinics, <strong>Dr. Deepali Patil</strong> combines profound clinical diagnostic acumen with genuine empathy for every patient.
                 </p>
@@ -99,32 +200,57 @@ const carePillars = [
                     Trained in internal medicine with a dedicated focus on cardiometabolic disorders and preventative longevity, Dr. Patil adopts the renowned Mayo Clinic collaborative care philosophy: addressing the whole person rather than isolated ailments.
                 </p>
 
-                <!-- 4 Pillars Grid -->
-                <div class="mt-8 grid grid-cols-2 gap-4">
+                <!-- Credentials Grid (6 Interactive Glass Tiles) -->
+                <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {
-                        carePillars.map((pillar) => (
-                            <div class="p-4 rounded-2xl elevated-card">
-                                <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={pillar.icon} />
+                        credentials.map((cred) => (
+                            <div class="p-3 rounded-2xl glass-panel elevation-1 hover:elevation-4 transition-all duration-200 bg-white/70">
+                                <div class="flex items-center gap-2 mb-1.5">
+                                    <div class="w-6 h-6 rounded-lg bg-sky-100/80 text-sky-700 flex items-center justify-center flex-shrink-0">
+                                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={cred.icon} />
+                                    </div>
+                                    <span class="text-[11px] font-semibold text-slate-500 truncate">{cred.label}</span>
                                 </div>
-                                <h4 class="text-sm font-bold text-slate-900">{pillar.title}</h4>
-                                <p class="mt-1 text-xs text-slate-600 leading-relaxed">{pillar.desc}</p>
+                                <div class="text-xs font-bold text-slate-800 leading-snug">{cred.val}</div>
                             </div>
                         ))
                     }
                 </div>
 
-                <div class="mt-8 flex items-center gap-4">
+                <!-- 4 Care Pillars Grid -->
+                <div class="mt-6 grid grid-cols-2 gap-3.5">
+                    {
+                        carePillars.map((pillar) => (
+                            <div class="p-3.5 rounded-2xl elevated-card">
+                                <div class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-2.5">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={pillar.icon} />
+                                </div>
+                                <h4 class="text-xs sm:text-sm font-bold text-slate-900">{pillar.title}</h4>
+                                <p class="mt-1 text-[11px] sm:text-xs text-slate-600 leading-relaxed">{pillar.desc}</p>
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <!-- Call to Action Buttons -->
+                <div class="mt-7 flex items-center gap-4 flex-wrap">
                     <a
                         href="#appointment"
-                        class="px-6 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm shadow-md shadow-sky-600/25 transition-all inline-flex items-center gap-2"
+                        class="px-6 py-3 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-semibold text-sm btn-elevated-primary inline-flex items-center gap-2"
                     >
                         Schedule an Appointment with Dr. Patil
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
                     </a>
+                    <a
+                        href="#specialties"
+                        class="px-5 py-3 rounded-full bg-white/80 hover:bg-white text-slate-700 font-semibold text-sm glass-pill inline-flex items-center gap-2"
+                    >
+                        View Clinical Specialties
+                    </a>
                 </div>
+
             </div>
 
         </div>
@@ -134,56 +260,110 @@ const carePillars = [
 <!-- ================= MOBILE ABOUT SECTION ================= -->
 <section class="block md:hidden px-3 py-10 bg-slate-100/50">
     <div class="mb-5">
-        <div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[10px] font-bold uppercase tracking-wider mb-2">
             <span class="w-1.5 h-1.5 rounded-full bg-sky-600"></span>
             About The Doctor
         </div>
         <h2 class="text-2xl font-extrabold text-slate-900 tracking-tight leading-tight">
             Dr. Deepali Patil, <span class="text-sky-600">MD, FACP</span>
         </h2>
-        <p class="mt-1 text-xs text-slate-600">
+        <p class="mt-1 text-xs text-slate-600 leading-relaxed">
             Senior Consultant Physician with 18+ years of clinical excellence in Internal Medicine & Cardiometabolic care.
         </p>
     </div>
 
-    <!-- Mobile Doctor Card -->
-    <div class="rounded-2xl glass-panel elevation-4 p-4 mb-4">
-        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
-            <div class="w-11 h-11 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+    <!-- Mobile Doctor Cutout Showcase Card -->
+    <div class="relative rounded-3xl glass-panel-elevated elevation-6 overflow-hidden bg-gradient-to-b from-white/90 via-sky-50/80 to-sky-100/70 border border-white/90 mb-4">
+        
+        <!-- Top Status Pills -->
+        <div class="absolute top-3 inset-x-3 z-20 flex items-center justify-between">
+            <div class="glass-pill elevation-1 px-2.5 py-1 rounded-full flex items-center gap-1.5 bg-white/90 backdrop-blur-md">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-[10px] font-bold text-slate-800">Verified Specialist</span>
+            </div>
+            <div class="glass-pill elevation-1 px-2.5 py-1 rounded-full flex items-center gap-1 bg-white/90 backdrop-blur-md">
+                <span class="text-[10px] font-bold text-amber-500">★</span>
+                <span class="text-[10px] font-bold text-slate-800">18+ Yrs Exp</span>
+            </div>
+        </div>
+
+        <!-- Ambient Glow behind Cutout -->
+        <div class="absolute top-12 left-1/2 -translate-x-1/2 w-48 h-48 bg-sky-400/20 rounded-full blur-2xl pointer-events-none"></div>
+
+        <!-- Cutout Image Container -->
+        <div class="relative z-10 flex justify-center items-end pt-10 h-[350px]">
+            <img
+                src="/DeepaliPatil.png"
+                alt="Dr. Deepali Patil"
+                class="
+                    h-full
+                    w-full
+                    m-2
+                    object-cover
+                    object-top
+                    pointer-events-none
+                    filter
+                    rounded-3xl
+                    drop-shadow-[0_12px_20px_rgba(14,165,233,0.2)]
+                "
+                loading="eager"
+            />
+        </div>
+
+        <!-- Bottom Doctor Identity Bar -->
+        <div class="relative z-20 p-3.5 bg-white/95 backdrop-blur-md border-t border-white/80 flex items-center justify-between">
+            <div>
+                <h3 class="text-sm font-bold text-slate-900 leading-tight">Dr. Deepali Patil</h3>
+                <p class="text-[11px] font-medium text-sky-700">Internal Medicine & Cardiometabolic Care</p>
+            </div>
+            <div class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-xs shadow-xs">
                 DP
             </div>
-            <div>
-                <h3 class="text-sm font-bold text-slate-900">Dr. Deepali Patil</h3>
-                <p class="text-[11px] font-medium text-sky-700">Internal Medicine Specialist</p>
+        </div>
+    </div>
+
+    <!-- Qualifications / Credential Chips Grid on Mobile -->
+    <div class="grid grid-cols-2 gap-2 mb-4">
+        {
+            credentials.map((cred) => (
+                <div class="p-2.5 rounded-xl glass-panel elevation-1 bg-white/80">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <div class="w-4 h-4 rounded bg-sky-100 text-sky-700 flex items-center justify-center flex-shrink-0">
+                            <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" set:html={cred.icon} />
+                        </div>
+                        <span class="text-[10px] font-medium text-slate-500 truncate">{cred.label}</span>
+                    </div>
+                    <div class="text-[11px] font-bold text-slate-800 leading-tight">{cred.val}</div>
+                </div>
+            ))
+        }
+    </div>
+
+    <!-- Mobile Philosophy Quote with Small Image on Left -->
+    <div class="mb-4 p-3.5 rounded-2xl bg-sky-50/90 border border-sky-100 elevation-1 flex items-start gap-3">
+        <div class="relative flex-shrink-0 mt-0.5">
+            <img
+                src="/about/doctor-listening-thumb.jpg"
+                alt="Doctor listening attentively to patient"
+                class="w-12 h-12 rounded-xl object-cover object-center border-2 border-white shadow-xs"
+                loading="lazy"
+                width="48"
+                height="48"
+            />
+            <div class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-sky-600 text-white flex items-center justify-center text-[9px] shadow-xs leading-none">
+                ❝
             </div>
         </div>
-
-        <div class="mt-3 space-y-2 text-xs">
-            <div class="flex justify-between py-1 border-b border-slate-50">
-                <span class="text-slate-500">Qualifications:</span>
-                <span class="font-bold text-slate-800">MBBS, MD, FACP</span>
-            </div>
-            <div class="flex justify-between py-1 border-b border-slate-50">
-                <span class="text-slate-500">Experience:</span>
-                <span class="font-bold text-slate-800">18+ Years</span>
-            </div>
-            <div class="flex justify-between py-1 border-b border-slate-50">
-                <span class="text-slate-500">Consultation:</span>
-                <span class="font-bold text-emerald-700">In-Clinic & Video</span>
-            </div>
-        </div>
-
-        <!-- Quote -->
-        <div class="mt-3 p-3 rounded-xl bg-sky-50/90 border border-sky-100 elevation-1">
-            <p class="text-[11px] italic text-slate-700 leading-snug">
-                "Healthcare starts with empathetic listening and understanding each patient's full life journey."
+        <div class="flex-1 min-w-0">
+            <p class="text-[11px] italic text-slate-700 leading-relaxed font-medium">
+                "The best interest of the patient is the only interest to be considered. Healthcare begins by listening patiently and discovering what lies behind the symptoms."
             </p>
-            <p class="text-[10px] font-bold text-sky-800 text-right mt-1">— Dr. Deepali Patil</p>
+            <p class="text-[10px] font-bold text-sky-800 text-right mt-1.5">— Dr. Deepali Patil, MD</p>
         </div>
     </div>
 
     <!-- Mobile Care Pillars (2x2) -->
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid grid-cols-2 gap-2 mb-4">
         {
             carePillars.map((pillar) => (
                 <div class="p-3 rounded-xl glass-panel elevation-2">
@@ -197,10 +377,10 @@ const carePillars = [
         }
     </div>
 
-    <div class="mt-4">
+    <div>
         <a
             href="#appointment"
-            class="w-full py-2.5 rounded-xl bg-sky-600 text-white text-center font-bold text-xs shadow-md shadow-sky-600/20 block"
+            class="w-full py-3 rounded-xl bg-sky-600 text-white text-center font-bold text-xs btn-elevated-primary block"
         >
             Book In-Clinic Consultation
         </a>

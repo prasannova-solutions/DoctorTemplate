@@ -10,6 +10,7 @@ const stories = [
         quote: "Dr. Deepali Patil completely transformed my diabetes care. Instead of just adding more prescriptions, she analyzed my metabolic markers, revamped my dietary timing, and helped me safely reduce my medications. Her clinical depth is unmatched.",
         rating: 5,
         badge: "Verified Patient",
+        avatar: "/testimonials/rajesh.jpg",
     },
     {
         name: "Sunita M.",
@@ -20,6 +21,7 @@ const stories = [
         quote: "For years I was told my exhaustion was simply stress. Dr. Patil was the first physician who truly listened, did targeted endocrine testing, and diagnosed subclinical Hashimoto's. Within 8 weeks under her plan, I felt like myself again.",
         rating: 5,
         badge: "Verified Patient",
+        avatar: "/testimonials/sunita.jpg",
     },
     {
         name: "Vikramaditya S.",
@@ -30,6 +32,7 @@ const stories = [
         quote: "With severe heart disease in my family, I needed a physician who practices true preventive medicine. Dr. Patil’s comprehensive risk evaluation and meticulous follow-up gave my entire family peace of mind.",
         rating: 5,
         badge: "Verified Patient",
+        avatar: "/testimonials/vikramaditya.jpg",
     },
     {
         name: "Pooja N.",
@@ -40,6 +43,7 @@ const stories = [
         quote: "The Mayo Clinic level of clinical thoroughness right here! The initial 45-minute consultation was completely unhurried. Dr. Patil connects the dots between sleep, nutrition, and blood biomarkers seamlessly.",
         rating: 5,
         badge: "Verified Patient",
+        avatar: "/testimonials/pooja.jpg",
     },
 ];
 ---
@@ -82,11 +86,21 @@ const stories = [
                 stories.map((story) => (
                     <div class="rounded-3xl elevated-card p-7 flex flex-col justify-between">
                         <div>
-                            <!-- Header: Patient name & Rating -->
+                            <!-- Header: Patient avatar, name & badge -->
                             <div class="flex items-center justify-between mb-4">
-                                <div>
-                                    <h3 class="text-base font-bold text-slate-900">{story.name}</h3>
-                                    <p class="text-xs text-slate-500 font-medium">{story.age} • {story.profession}</p>
+                                <div class="flex items-center gap-3.5">
+                                    <img
+                                        src={story.avatar}
+                                        alt={story.name}
+                                        class="w-12 h-12 rounded-2xl object-cover border-2 border-white shadow-sm bg-slate-100 flex-shrink-0"
+                                        loading="lazy"
+                                        width="48"
+                                        height="48"
+                                    />
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900 leading-tight">{story.name}</h3>
+                                        <p class="text-xs text-slate-500 font-medium mt-0.5">{story.age} • {story.profession}</p>
+                                    </div>
                                 </div>
                                 <span class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 flex items-center gap-1">
                                     <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -150,10 +164,20 @@ const stories = [
         {
             stories.map((story) => (
                 <div class="rounded-2xl glass-panel elevation-2 p-4">
-                    <div class="flex items-center justify-between mb-2">
-                        <div>
-                            <h4 class="text-xs font-bold text-slate-900">{story.name}</h4>
-                            <p class="text-[10px] text-slate-500">{story.condition}</p>
+                    <div class="flex items-center justify-between mb-2.5">
+                        <div class="flex items-center gap-2.5">
+                            <img
+                                src={story.avatar}
+                                alt={story.name}
+                                class="w-10 h-10 rounded-xl object-cover border border-white shadow-xs bg-slate-100 flex-shrink-0"
+                                loading="lazy"
+                                width="40"
+                                height="40"
+                            />
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-900 leading-tight">{story.name}</h4>
+                                <p class="text-[10px] text-slate-500 font-medium">{story.age} • {story.profession}</p>
+                            </div>
                         </div>
                         <span class="text-[9px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700">
                             Verified
