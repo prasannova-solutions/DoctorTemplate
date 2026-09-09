@@ -7,15 +7,15 @@
   /* ==========================================================================
      SHADOW COLOR TOKENS (Darker, High-Strength 3D Floating Depths)
      ========================================================================== */
-  /* Soft obsidian/slate-950 core for clean, realistic floating depth */
-  --shadow-umbra: rgba(15, 23, 42, 0.14);
-  --shadow-penumbra: rgba(15, 23, 42, 0.08);
-  --shadow-ambient: rgba(15, 23, 42, 0.04);
-  --shadow-contact: rgba(15, 23, 42, 0.06);
+  /* Soft, luminous 3D floating depths - feather-light bottom shadow */
+  --shadow-umbra: rgba(15, 23, 42, 0.08);
+  --shadow-penumbra: rgba(15, 23, 42, 0.05);
+  --shadow-ambient: rgba(15, 23, 42, 0.025);
+  --shadow-contact: rgba(15, 23, 42, 0.03);
   
-  /* Ambient atmospheric medical glow (soft light refracting through glass) */
-  --shadow-glow: rgba(14, 165, 233, 0.10);
-  --shadow-glow-hover: rgba(2, 132, 199, 0.16);
+  /* Ambient atmospheric medical glow (soft light wrapping smoothly around card) */
+  --shadow-glow: rgba(14, 165, 233, 0.08);
+  --shadow-glow-hover: rgba(2, 132, 199, 0.14);
 
   /* Specular top rim border & highlight */
   --glass-rim-top: rgba(255, 255, 255, 0.98);
@@ -30,40 +30,40 @@
   --glass-bg-hover: rgba(255, 255, 255, 0.96);
 
   /* ==========================================================================
-     ELEVATION SCALE TOKENS (Multi-layered 3D Air Floating Shadows)
+     ELEVATION SCALE TOKENS (Balanced, Low-Offset Floating Air Shadows)
      ========================================================================== */
   --shadow-elevation-1: 
+    0 1px 3px 0 var(--shadow-penumbra),
+    0 1px 2px -1px var(--shadow-ambient);
+
+  --shadow-elevation-2: 
     0 2px 5px -1px var(--shadow-penumbra),
     0 1px 3px -1px var(--shadow-ambient);
 
-  --shadow-elevation-2: 
-    0 4px 10px -2px var(--shadow-penumbra),
-    0 2px 5px -1px var(--shadow-ambient);
-
   --shadow-elevation-4: 
-    0 8px 18px -4px var(--shadow-penumbra),
-    0 3px 8px -2px var(--shadow-ambient),
-    0 2px 6px 0 var(--shadow-glow);
+    0 3px 8px -2px var(--shadow-penumbra),
+    0 1px 4px -1px var(--shadow-ambient),
+    0 0 6px 0 var(--shadow-glow);
 
   --shadow-elevation-6: 
-    0 12px 26px -5px var(--shadow-umbra),
-    0 6px 12px -3px var(--shadow-penumbra),
-    0 3px 8px 0 var(--shadow-glow);
+    0 4px 12px -3px var(--shadow-umbra),
+    0 2px 6px -2px var(--shadow-penumbra),
+    0 0 8px 0 var(--shadow-glow);
 
   --shadow-elevation-8: 
-    0 18px 34px -7px var(--shadow-umbra),
-    0 8px 18px -4px var(--shadow-penumbra),
-    0 4px 12px 0 var(--shadow-glow);
+    0 5px 16px -4px var(--shadow-umbra),
+    0 2px 8px -2px var(--shadow-penumbra),
+    0 0 10px 0 var(--shadow-glow);
 
   --shadow-elevation-12: 
-    0 24px 42px -10px var(--shadow-umbra),
-    0 12px 22px -5px var(--shadow-penumbra),
-    0 6px 16px 0 var(--shadow-glow);
+    0 6px 20px -5px var(--shadow-umbra),
+    0 3px 10px -3px var(--shadow-penumbra),
+    0 0 12px 0 var(--shadow-glow);
 
   --shadow-elevation-16: 
-    0 32px 52px -12px var(--shadow-umbra),
-    0 16px 26px -6px var(--shadow-penumbra),
-    0 8px 20px 0 var(--shadow-glow-hover);
+    0 8px 24px -6px var(--shadow-umbra),
+    0 4px 12px -4px var(--shadow-penumbra),
+    0 0 16px 0 var(--shadow-glow-hover);
 }
 
 /* ==========================================================================
@@ -114,9 +114,9 @@
   -webkit-backdrop-filter: blur(14px) saturate(180%);
   border: 1px solid var(--glass-border-color);
   box-shadow: 
-    0 10px 24px -6px var(--shadow-umbra),
-    0 4px 10px -2px var(--shadow-penumbra),
-    0 2px 6px 0 var(--shadow-glow),
+    0 3px 12px -3px var(--shadow-umbra),
+    0 1px 5px -1px var(--shadow-penumbra),
+    0 0 8px 0 var(--shadow-glow),
     inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -128,9 +128,9 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--glass-rim-top);
   box-shadow: 
-    0 14px 28px -7px var(--shadow-umbra),
-    0 6px 14px -3px var(--shadow-penumbra),
-    0 3px 10px 0 var(--shadow-glow),
+    0 4px 16px -4px var(--shadow-umbra),
+    0 2px 8px -2px var(--shadow-penumbra),
+    0 0 10px 0 var(--shadow-glow),
     inset 0 2px 2px 0 #ffffff;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -143,9 +143,9 @@
   -webkit-backdrop-filter: blur(12px) saturate(170%);
   border: 1px solid var(--glass-border-color);
   box-shadow: 
-    0 6px 16px -4px var(--shadow-penumbra),
-    0 2px 6px -2px var(--shadow-ambient),
-    0 1px 4px 0 var(--shadow-glow),
+    0 2px 8px -2px var(--shadow-penumbra),
+    0 1px 3px -1px var(--shadow-ambient),
+    0 0 10px 0 var(--shadow-glow),
     inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -156,13 +156,13 @@
 }
 
 .elevated-card:hover {
-  transform: translate3d(0, -5px, 0);
+  transform: translate3d(0, -4px, 0);
   background: var(--glass-bg-hover);
   border-color: rgba(186, 230, 253, 1);
   box-shadow: 
-    0 12px 24px -5px var(--shadow-umbra),
-    0 6px 12px -3px var(--shadow-glow-hover),
-    0 2px 6px 0 var(--shadow-contact),
+    0 4px 14px -3px var(--shadow-umbra),
+    0 2px 8px -2px var(--shadow-glow-hover),
+    0 0 12px 0 var(--shadow-contact),
     inset 0 2px 2px 0 #ffffff;
 }
 
@@ -173,9 +173,9 @@
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid var(--glass-border-color);
   box-shadow: 
-    0 8px 20px -5px var(--shadow-umbra),
-    0 3px 8px -2px var(--shadow-penumbra),
-    0 1px 6px 0 var(--shadow-glow),
+    0 2px 8px -2px var(--shadow-umbra),
+    0 1px 4px -1px var(--shadow-penumbra),
+    0 0 6px 0 var(--shadow-glow),
     inset 0 1.5px 1.5px 0 var(--glass-rim-inner);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
